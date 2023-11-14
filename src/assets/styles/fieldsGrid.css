@@ -1,0 +1,16 @@
+.field {
+    margin-bottom: 1rem;
+}
+
+#fieldsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+    #fieldsGrid {
+        grid-template-columns: 1fr;
+    }
+}
