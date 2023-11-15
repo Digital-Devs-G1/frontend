@@ -13,22 +13,22 @@ const generateURL = (endpoint) => {
 //class ReportApiUrl {
 class Report {
   base () { return generateURL("/Report") }
-  byId (id) {return `${base()}/${id}` }
-  fields (id) { return `${byId(id)}/VariableFields` }
-  pendingApprovals() {return `${base()}/PendingApprovals`}
+  byId (id) {return `${this.base()}/${id}` }
+  fields (id) { return `${this.byId(id)}/VariableFields` }
+  pendingApprovals() {return `${this.base()}/PendingApprovals`}
 }
 
 class ReportTemplate {
   base () { return generateURL("/ReportTemplate") }
-  byId (id) { return `${base()}/${id}` }
-  fields (id) { `${ReportApiUrl.byId(id)}/ReportTemplateFields`}
+  byId (id) { return `${this.base()}/${id}` }
+  fields (id) { return `${this.byId(id)}/ReportTemplateFields`}
 }
 
 class ReportTracking {
   base () { return generateURL("/ReportTracking") }
-  byId (id) { return `${base()}/${id}` }
-  accept (id) { return `${byId(id)}/Accept` }
-  dismiss (id) { return `${ReportApiUrl.byId(id)}/Dismiss`}
+  byId (id) { return `${this.base()}/${id}` }
+  accept (id) { return `${this.byId(id)}/Accept` }
+  dismiss (id) { return `${this.byId(id)}/Dismiss`}
 }
 
 export {

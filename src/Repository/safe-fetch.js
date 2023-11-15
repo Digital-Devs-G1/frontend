@@ -13,7 +13,10 @@ function defaultOptions(method, data = null)
 
     return {
         method: method,
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+            "Content-Type": "application/json",
+            "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2ZjQ1MTAxMi1iNzk0LTRmNTQtYjM4NS1jMDY0ZWVlYTAwYzEiLCJpYXQiOiIxNS1Ob3YtMjMgMTI6MDM6MTMgQU0iLCJpZCI6IjEwIiwiZW1haWwiOiJtQDQuY29tIiwicm9sIjoiQWRtaW4iLCJleHAiOjE3MDAwMjA5OTMsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6InVzZXJzIn0.DEV3Xyg8Uc071papsOBFRI36C04euZ5VT0SPtcYUgyg"
+        },
         mode: 'cors',
         cache: 'default',
         body: data ? JSON.stringify(data) : null
@@ -24,20 +27,7 @@ async function safeFetch(url, options)
 {
     try
     {
-        let result = await fetch(url, options);
-        if (result.ok)
-            return result.json;
-        else
-        {
-            alert(result.json.message);
-            // Que hacemos con 
-            // 400
-            // 401
-            // 404 
-            // 409
-            // 422
-            // 500
-        }
+        return await fetch(url, options);
     }
     catch (error) 
     {
@@ -45,6 +35,7 @@ async function safeFetch(url, options)
         msg += `URL: {url} |`;
         msg += `Options: {options}.`;
         console.error(msg, error);
+        return null;
     }
 }
 

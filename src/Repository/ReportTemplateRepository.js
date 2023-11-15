@@ -1,15 +1,23 @@
-import {HttpMethod, defaultOptions, safeFetch } from './safeFetch.js'; 
-import {Report} from './reportApiRepository.js';
+import {HttpMethod, defaultOptions, safeFetch } from './safe-fetch.js'; 
+import {ReportTemplate} from './report-api-urls.js';
 
 async function getFieldTemplates(id)
 {
-    const url = Report.fields(id);
+    const url = new ReportTemplate().fields(id);
     const options = defaultOptions(HttpMethod.get); 
-    safeFetch(url, options);
+    return await safeFetch(url, options);
+};
+
+async function getReportTemplates()
+{
+    const url = new ReportTemplate().base();
+    const options = defaultOptions(HttpMethod.get); 
+    return await safeFetch(url, options);
 };
 
 const ReportTemplateRepository = {
-    getFieldTemplates
+    getFieldTemplates,
+    getReportTemplates
 };
 
 export default ReportTemplateRepository;
