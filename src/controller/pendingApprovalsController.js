@@ -7,29 +7,10 @@ document.addEventListener('DOMContentLoaded', async () =>
     let headerMenuItems = AuthController.headerMenuOptions(
         selectedOption
     );
-    let buttons = getButtons();
-    PendingApprovalsView.render(headerMenuItems, buttons);
+    PendingApprovalsView.render(headerMenuItems);
     let container = document.querySelector("section.customCard");
     setButtonsEvent(container);
 });
-
-function getButtons() 
-{
-    return [
-        {
-            name: "Details",
-            class: "detailsButton",
-        },
-        {
-            name: "Approve",
-            class: "approveButton",
-        },
-        {
-            name: "Dismiss",
-            class: "dismissButton",
-        },
-    ];
-}
 
 function setButtonsEvent(container) 
 {

@@ -61,14 +61,34 @@ function getMenuItems() {
   ];
 }
 
-function render(menuItems, buttons) {
-  HeaderComponent.render(menuItems);
+function getButtons() 
+{
+    return [
+        {
+            name: "Detalles",
+            class: "detailsButton",
+        },
+        {
+            name: "Aprovar",
+            class: "approveButton",
+        },
+        {
+            name: "Rechazar",
+            class: "dismissButton",
+        },
+    ];
+}
+
+function render(menuItems) 
+{
+  let header = document.querySelector("header");
+  HeaderComponent.render(menuItems, header);
   TableComponent.render(
     document.querySelector("section.customCard"),
     getMenuHeader(),
     getMenuItems(),
     "pendingApprovalsButtons",
-    buttons
+    getButtons()
   );
 }
 

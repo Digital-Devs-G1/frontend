@@ -9,7 +9,7 @@ export default async function getData(result)
         // evaluar 204
         return await result.json();
 
-    if(result.status ==404)
+    if(result.status == 404)
         return null;
     // PORQUE EL 404 NO LO PARSEA??????
     const errorResponse = await result.json();

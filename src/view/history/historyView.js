@@ -74,15 +74,26 @@ function getMenuItems()
   ];
 }
 
-function render(menuItems, buttons) 
+function getButtons() 
 {
-    HeaderComponent.render(menuItems);
+    return [
+        {
+            name: "Details",
+            class: "detailsButton",
+        }
+    ];
+}
+
+function render(menuItems) 
+{
+    let header = document.querySelector("header");
+    HeaderComponent.render(menuItems, header);
     TableComponent.render(
       document.querySelector("section.customCard"),
       getMenuHeader(),
       getMenuItems(),
       "historyButtons",
-      buttons
+      getButtons()
     );
 };
 

@@ -7,21 +7,10 @@ document.addEventListener('DOMContentLoaded', async () =>
     let headerMenuItems = AuthController.headerMenuOptions(
         selectedOption
     );
-    let buttons = getButtons();
-    HistoryView.render(headerMenuItems, buttons);
+    HistoryView.render(headerMenuItems);
     let container = document.querySelector("section.customCard");
     setButtonsEvent(container);
 });
-
-function getButtons() 
-{
-    return [
-        {
-            name: "Details",
-            class: "detailsButton",
-        }
-    ];
-}
 
 function setButtonsEvent(container) 
 {

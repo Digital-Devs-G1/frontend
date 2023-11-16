@@ -8,7 +8,7 @@
   else nChild.classList.add("active");
 }
 */
-function render(menuItems) {
+function render(menuItems, container) {
   let result = `
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
@@ -41,9 +41,8 @@ function render(menuItems) {
             </div>
           </nav>
     `;
-  let header = document.querySelector("header");
-  header.innerHTML = result;
-  header.id = "customHeader";
+  container.innerHTML = result;
+  container.id = "customHeader";
 }
 
 const HeaderComponent = {

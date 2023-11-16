@@ -4,7 +4,8 @@ import HeaderComponent from "../../component/headerComponent.js";
 
 function render(menuItems) 
 {
-    HeaderComponent.render(menuItems);
+    let header = document.querySelector("header");
+    HeaderComponent.render(menuItems, header);
 };
 
 function addTemplateOptions(payload)
