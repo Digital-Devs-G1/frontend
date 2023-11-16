@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/styles/loginStyle.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/styles/main.css">
+</head>
+<body>
+    <div class="login_container">
+        <div class="login-header">
+          <div>Login</div>
+        </div>
+        <input type="email" class="login-input" placeholder="username" id="username">
+        <input type="text" class="login-input" placeholder="password" id="password">
+        <div id="error-messages-container" class="error-messages-container">
+        </div>
+        <label class="check_container">
+            <input checked="checked" type="checkbox" id="show-password-checkbox">
+            <div class="checkmark"></div>
+            <label for="show-password-checkbox" class="show-pass-text">Mostrar contraseña</label>   
+        </label>
+        <button type="submit" class="login-button" id="login-button">Login</button>
+    </div>
+    <script type="module" src="./loginView.js"></script>
+    <script type="module" src="../../controller/loginController.js"></script>
+</body>
+</html>

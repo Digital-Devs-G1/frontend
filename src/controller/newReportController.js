@@ -1,20 +1,37 @@
 import ReportTemplateService from "../services/reportTemplateService.js";
-import NewReport from "../view/newReport.js";
+import NewReportView from "../view/newReport/newReportView.js";
+import HeaderController from "./authController.js";
+import AuthController from "./authController.js";
 
-document.addEventListener('DOMContentLoaded', async () => {
-    let payload = await ReportTemplateService.getReportTemplates();
-    NewReport.addTemplateOptions(payload);
-});
-
-templateSelect.addEventListener('change', async (event) => {
-    let payload = await ReportTemplateService.getFieldTemplates(
-        event.target.value
+document.addEventListener('DOMContentLoaded', async () => 
+{
+    let selectedOption = AuthController.newReportMenuIndex;
+    let headerMenuItems = AuthController.headerMenuOptions(
+        selectedOption
     );
-    NewReport.showTemplateFields(payload);
-});
+    NewReportView.render(headerMenuItems);
 
-let button = document.getElementById('saveReport');
-button.addEventListener('click', () => { 
-    NewReport.cleanFields();
-    alert("Reporte enviado con exito");
+    let payload = await ReportTemplateService.getReportTemplates();
+    NewReportView.addTemplateOptions(payload);
+
+    let templateSelect = document.getElementById('templateSelect');
+    templateSelect.addEventListener('change', async (event) => {
+        if(event.target.value === "-1")
+            NewReportView.hideFields();
+        else
+        {
+            let payload = await ReportTemplateService.getFieldTemplates(
+                event.target.value
+            );
+            NewReportView.showTemplateFields(payload);
+        }
+    });
+
+    let button = document.getElementById('saveReport');
+    button.addEventListener('click', () => { 
+        NewReportView.cleanFields();
+        alert("Reporte enviado con exito");
+    });
+
+    HeaderController.renderComponent(0);
 });

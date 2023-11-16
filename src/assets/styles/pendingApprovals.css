@@ -1,0 +1,11 @@
+.customCard {
+    width: 95vw;
+}
+
+.pendingApprovalsButtons {
+    min-width: 20rem;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    gap: 0.2rem;
+}

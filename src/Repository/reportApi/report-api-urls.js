@@ -10,21 +10,20 @@ const generateURL = (endpoint) => {
   return `${API_URL}${endpoint}`;
 };
 
-//class ReportApiUrl {
-class Report {
+class ReportUrlBuilder {
   base () { return generateURL("/Report") }
   byId (id) {return `${this.base()}/${id}` }
   fields (id) { return `${this.byId(id)}/VariableFields` }
   pendingApprovals() {return `${this.base()}/PendingApprovals`}
 }
 
-class ReportTemplate {
+class ReportTemplateUrlBuilder {
   base () { return generateURL("/ReportTemplate") }
   byId (id) { return `${this.base()}/${id}` }
   fields (id) { return `${this.byId(id)}/ReportTemplateFields`}
 }
 
-class ReportTracking {
+class ReportTrackingUrlBuilder {
   base () { return generateURL("/ReportTracking") }
   byId (id) { return `${this.base()}/${id}` }
   accept (id) { return `${this.byId(id)}/Accept` }
@@ -32,7 +31,7 @@ class ReportTracking {
 }
 
 export {
-  Report,
-  ReportTemplate,
-  ReportTracking
+  ReportUrlBuilder,
+  ReportTemplateUrlBuilder,
+  ReportTrackingUrlBuilder
 };

@@ -1,0 +1,166 @@
+/* Pallet Colors */
+:root{
+  --night: #12130F;
+  --pacific-cyan: #06AED5;
+  --lapis-lazuli: #145C9E;
+  --intense-aquamarine: #0FF4C6;
+  --light-aquamarine: #B2FFD6;
+  --black: #000000;
+  --white: #FFFFFF;
+  --platinum: #D7DEDF;
+  --eerie-black: #1A1A1B;
+  --slate-gray: #70798C;
+  --error-red : #ff3333;
+}
+
+/* Body Style */
+body{
+  background-color: var(--night);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container Login */
+.login_container {
+  width: 300px;
+  padding: 30px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1), 0px 0px 0px 3px var(--lapis-lazuli), inset 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title 'Login' */
+.login-header {
+  font-size: x-large;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-header h1 {
+  color: var(--night);
+  font-size: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Input Login */
+.login-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  background: var(--platinum);
+  border-radius: 4px;
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Button 'Login' */
+.login-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: var(--lapis-lazuli);
+  color: #fff;
+  font-weight: bold;
+  border-radius: 4px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0px 3px 6px var(--eerie-black)(0, 0, 0, 0.1), inset 0px 1px 3px rgba(255, 255, 255, 0.5);
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-button:hover {
+  background: var(--pacific-cyan);
+  transform: translateY(-2px);
+}
+
+/* Checkbox 'Password' */
+.check_container {
+  display: flex;
+  cursor: pointer;
+  font-size: 20px;
+  user-select: none;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+ }
+
+ /* Show Pass Style */
+#show-password-checkbox {
+  height: 0;
+  width: 0;
+  padding-left: 10px;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+ }
+ 
+ .show-pass-text{
+  padding-left: 15px;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--night);
+}
+
+ /* Create a custom checkbox */
+ .checkmark {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 1.3em;
+  width: 1.3em;
+  background: var(--platinum);
+  border-radius: 7px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.30), 0px 1px 1px rgba(0,5);
+ }
+ 
+ /* When the checkbox is checked, add a blue background */
+ .check_container input:checked ~ .checkmark {
+  background-image: linear-gradient(var(--lapis-lazuli),var(--pacific-cyan))
+ }
+ 
+ /* Create the checkmark/indicator (hidden when not checked) */
+ .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+ }
+ 
+ /* Show the checkmark when checked */
+ .check_container input:checked ~ .checkmark:after {
+  display: block;
+ }
+ 
+ /* Style the checkmark/indicator */
+ .check_container .checkmark:after {
+  left: 0.45em;
+  top: 0.20em;
+  width: 0.24em;
+  height: 0.6em;
+  border: solid var(--platinum);
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
+ }
+
+ /* Error Messages */
+ .error-messages-container {
+  display: none;
+  width: 100%;
+  margin: 0px;
+  text-align: center;
+ }
+
+ .error-item{
+  margin: 0px;
+  color: var(--error-red);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+ }
+
