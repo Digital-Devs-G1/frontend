@@ -1,5 +1,6 @@
 import PendingApprovalsView from "../view/pendingApprovals/pendingApprovalsView.js";
 import AuthController from "./authController.js";
+import ReportService from "../services/reportService.js";
 
 document.addEventListener('DOMContentLoaded', async () => 
 {
@@ -7,7 +8,8 @@ document.addEventListener('DOMContentLoaded', async () =>
     let headerMenuItems = AuthController.headerMenuOptions(
         selectedOption
     );
-    PendingApprovalsView.render(headerMenuItems);
+    let reports = await ReportService.getReports();
+    PendingApprovalsView.render(headerMenuItems, reports);
     let container = document.querySelector("section.customCard");
     setButtonsEvent(container);
 });

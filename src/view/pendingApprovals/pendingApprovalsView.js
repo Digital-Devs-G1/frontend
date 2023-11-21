@@ -22,43 +22,32 @@ function getMenuHeader() {
   ];
 }
 
-function getMenuItems() {
-  return [
-    {
-      id: 1,
+function getTableRows(reports) 
+{
+  let items = [];
+  console.log(reports);
+  reports.forEach(report => {
+    let newIem = {
+      id: report.reportId,
       columns: [
         {
           class : "customTableDate",
-          value : "2023-10-25" 
+          value : report.dateTracking 
         },
         {
           class : "",
-          value : "Lorem ipsum dolor sit amet, consectetur adip" 
+          value : report.description
         },
         {
           class : "",
-          value : "15000" 
+          value : report.amount 
         }
       ]
-    },
-    {
-      id: 2,
-      columns: [
-        {
-          class : "customTableDate",
-          value : "2023-10-29" 
-        },
-        {
-          class : "",
-          value : "Lorem ipsum dolor sit amet, consectetur adip Lorem ipsum dolor sit amet, consectetur adip" 
-        },
-        {
-          class : "",
-          value : "7500" 
-        }
-      ]
-    },
-  ];
+    }
+    items.push(newIem);
+  });
+  
+  return items;
 }
 
 function getButtons() 
@@ -79,14 +68,14 @@ function getButtons()
     ];
 }
 
-function render(menuItems) 
+function render(menuItems, reports) 
 {
   let header = document.querySelector("header");
   HeaderComponent.render(menuItems, header);
   TableComponent.render(
     document.querySelector("section.customCard"),
     getMenuHeader(),
-    getMenuItems(),
+    getTableRows(reports),
     "pendingApprovalsButtons",
     getButtons()
   );

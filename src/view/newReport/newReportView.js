@@ -28,10 +28,12 @@ function hideFields()
 
 function cleanFields()
 {
-    const inputFields = document.getElementById('fieldsGrid');
-    inputFields.forEach(input => {
-        input.value = '';
-    });
+    const inputFields = document
+        .getElementById('fieldsGrid')
+        .getElementsByTagName('input');
+    for (let i = 0; i < inputFields.length; i++) {
+        inputFields[i].value = '';
+    }   
 }
 
 const NewReportView = {

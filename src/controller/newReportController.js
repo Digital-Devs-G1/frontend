@@ -1,6 +1,5 @@
-import ReportTemplateService from "../services/reportTemplateService.js";
+import ReportService from "../services/reportService.js";
 import NewReportView from "../view/newReport/newReportView.js";
-import HeaderController from "./authController.js";
 import AuthController from "./authController.js";
 
 document.addEventListener('DOMContentLoaded', async () => 
@@ -11,27 +10,70 @@ document.addEventListener('DOMContentLoaded', async () =>
     );
     NewReportView.render(headerMenuItems);
 
-    let payload = await ReportTemplateService.getReportTemplates();
+    let payload = await ReportService.getReportTemplates();
     NewReportView.addTemplateOptions(payload);
 
     let templateSelect = document.getElementById('templateSelect');
-    templateSelect.addEventListener('change', async (event) => {
-        if(event.target.value === "-1")
-            NewReportView.hideFields();
-        else
-        {
-            let payload = await ReportTemplateService.getFieldTemplates(
-                event.target.value
-            );
-            NewReportView.showTemplateFields(payload);
-        }
-    });
+    templateSelect.addEventListener('change', showTemplateHandler);
 
     let button = document.getElementById('saveReport');
-    button.addEventListener('click', () => { 
-        NewReportView.cleanFields();
-        alert("Reporte enviado con exito");
+    button.addEventListener('click', async () => { 
+        if(await saveReport())
+            NewReportView.cleanFields();
     });
-
-    HeaderController.renderComponent(0);
 });
+
+async function showTemplateHandler(event) {
+    if(event.target.value === "-1")
+        NewReportView.hideFields();
+    else
+    {
+        let payload = await ReportService.getFieldTemplates(
+            event.target.value
+        );
+        addFixedFields(payload);
+        NewReportView.showTemplateFields(payload);
+    }
+}
+
+function addFixedFields(payload) 
+{
+    payload.push({
+        "name": "Importe",
+        "value": "$0"
+    });
+    payload.push({
+        "name": "Detalles",
+        "value": "Breve descripcion"
+    });
+}
+
+async function saveReport()
+{
+    var selectElement = document.getElementById("templateSelect");
+    var selectedValue = selectElement.value;
+    if(selectedValue == -1)
+        return;
+    const inputElements = document.querySelectorAll('#fieldsGrid .input-group');
+    const fieldsArray = [];
+    const length = inputElements.length;
+    for (let i = 0; i < length - 2; i++) {
+        const elem = inputElements[i];
+        const name = elem.querySelector('span').textContent;
+        const value = elem.querySelector('input').value;
+        const fieldObject = {
+            "name": name,
+            "value": value
+        };
+        fieldsArray.push(fieldObject);
+    }
+    let newReport = {
+        "templateId": selectElement.value,
+        "report": {
+          "description": inputElements[length-1].querySelector('input').value,
+          "amount": inputElements[length-2].querySelector('input').value,
+        },
+        "fields":fieldsArray
+    };
+    return await ReportService.addNewReport(newReport);
+}

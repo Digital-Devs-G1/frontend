@@ -26,52 +26,36 @@ function getMenuHeader() {
   ];
 }
 
-function getMenuItems() 
+function getTableRows(reports) 
 {
-  return [
-    {
-      id: 1,
+  let items = [];
+  console.log(reports);
+  reports.forEach(report => {
+    let newIem = {
+      id: report.reportId,
       columns: [
         {
           class : "customTableDate",
-          value : "2023-10-25" 
+          value : report.dateTracking 
         },
         {
           class : "",
-          value : "Lorem ipsum dolor sit amet, consectetur adip" 
+          value : report.description
         },
         {
           class : "",
-          value : "15000" 
+          value : report.amount 
         },
         {
           class : "",
-          value : "Revision" 
+          value : report.status
         }
       ]
-    },
-    {
-      id: 2,
-      columns: [
-        {
-          class : "customTableDate",
-          value : "2023-10-29" 
-        },
-        {
-          class : "",
-          value : "Lorem ipsum dolor sit amet, consectetur adip Lorem ipsum dolor sit amet, consectetur adip" 
-        },
-        {
-          class : "",
-          value : "7500" 
-        },
-        {
-          class : "",
-          value : "Aprovado" 
-        }
-      ]
-    },
-  ];
+    }
+    items.push(newIem);
+  });
+  
+  return items;
 }
 
 function getButtons() 
@@ -84,14 +68,14 @@ function getButtons()
     ];
 }
 
-function render(menuItems) 
+function render(menuItems, reports) 
 {
     let header = document.querySelector("header");
     HeaderComponent.render(menuItems, header);
     TableComponent.render(
       document.querySelector("section.customCard"),
       getMenuHeader(),
-      getMenuItems(),
+      getTableRows(reports),
       "historyButtons",
       getButtons()
     );
