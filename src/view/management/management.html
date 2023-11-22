@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/styles/management.css">
+    <link rel="stylesheet" href="../../assets/styles/header.css">
+
+</head>
+<body>
+
+    <header></header>
+    <main class="container">
+        <h1>Usuario</h1>
+        <div> 
+
+            <form id="formUser" class="userForm">
+
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email</label>
+                  <input type="email" class="form-control form_input" id="email" aria-describedby="emailHelp" name="email">
+                  <p class="form_input-error">email requerido, maximo 50 caracteres.</p>
+                </div>
+
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="" class="form-control form_input" id="password" value="user123" name="password">
+                  <p class="form_input-error">la contraseña es requerida</p>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nombre</label>
+                    <input class="form-control form_input" id="firstName"  type="text" >
+                    <p class="form_input-error">Nombre requerido, maximo 50 caracteres.</p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Apellido</label>
+                    <input class="form-control form_input" id="lastName"  type="text">
+                    <p class="form_input-error">apellido requerido</p>
+                </div>
+
+                <div class="">
+
+                    <select id="rol" class="form-select form_input" aria-label="Default select example">
+                    </select>
+                    <p class="form_input-error">el rol es requerido</p>
+                </div>
+            
+                <div class="">
+                    <select id="department" class="form-select form_input" aria-label="Default select example">
+                    </select>
+                    <p class="form_input-error">el departamento es requerido</p>
+                </div>
+
+                <div class="">
+                    <select id="position" class="form-select form_input" aria-label="Default select example">
+                    </select>
+                    <p class="form_input-error">la posicion es requerida</p>
+                </div>
+
+                <div>
+                    <select id="superior" class="form-select" aria-label="Default select example">
+                    </select>
+                </div>
+
+                <button id="btn-insert-user" type="submit" class="btn btn-primary">Crear</button>
+              </form>
+
+        </div>
+
+    </main>
+
+    <script type="module" src="../../controller/managementController.js"></script>
+    <!-- <script type="module" src="./managementOrganization.js"></script> -->
+
+    <!-- <script type="module" src="../../controller/loginController.js"></script> -->
+</body>
+</html>

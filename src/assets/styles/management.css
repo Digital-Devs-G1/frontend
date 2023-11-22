@@ -1,0 +1,41 @@
+
+.userForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+}
+
+.form_input-error{
+    font-size: 12px;
+    line-height: 12px;
+    margin-bottom: 0;
+    margin-left: 10px;
+    opacity: 0;
+}
+
+.p-error{
+    line-height: 12px;
+    margin-bottom: 0;
+    margin-left: 10px;
+    opacity: 0;
+}
+
+
+
+
+.form_grupo-incorrecto .form_input{
+    border:1px solid #bb2929;
+}
+
+.form_grupo-incorrecto .form_input-error{
+    opacity: 1;
+}
+
+
+
+@media (max-width: 800px) {
+    .userForm {
+        grid-template-columns: 1fr;
+    }
+}
