@@ -20,11 +20,15 @@ async function login(credentials)
   if(json==null)
     return false;
   console.log(json);
+  
   localStorage.setItem("token", json.result.token);
   localStorage.setItem("tokenExpiration", json.result.expiration);
+
+  let dataToken = getPayload(json.result.token);
+  localStorage.setItem("data", JSON.stringify(dataToken));
+
   return true;
 }
-
 
 async function getFieldsLogin() 
 {
@@ -63,4 +67,20 @@ async function validateCredentials(user, pass) {
     },
     errors: errorsList,
   };
+}
+
+const getPayload = (token) =>{
+
+  const [, payload] = token.split('.');
+  const decodedPayload = JSON.parse(base64UrlDecode(payload));
+  return decodedPayload;
+}
+
+const base64UrlDecode = (str) => {
+  const base64 = str.replace(/-/g, '+').replace(/_/g, '/');
+  const padding = base64.length % 4;
+  if (padding) {
+    base64 += '='.repeat(4 - padding);
+  }
+  return atob(base64);
 }
