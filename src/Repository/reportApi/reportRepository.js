@@ -50,6 +50,13 @@ async function addNewReport(newReport)
     return await safeFetch(url, options);
 };
 
+async function getReportFields(id)
+{
+    const url = new ReportUrlBuilder().fields(id);
+    const options = defaultOptions(HttpMethod.get); 
+    return await safeFetch(url, options);
+};
+
 const ReportTemplateRepository = {
     dismiss,
     accept,
@@ -57,7 +64,8 @@ const ReportTemplateRepository = {
     getFieldTemplates,
     getReportTemplates,
     addNewReport,
-    getReports
+    getReports,
+    getReportFields
 };
 
 export default ReportTemplateRepository;

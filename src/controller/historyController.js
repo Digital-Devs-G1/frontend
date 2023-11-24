@@ -25,7 +25,7 @@ async function setButtonsEvent(container)
     detailButtons.forEach(function (button) {
       button.addEventListener("click",async function () {
 
-        let fields = await ReportService.getFieldTemplates(button.getAttribute('item-id'))
+        let fields = await ReportService.getReportFields(button.getAttribute('item-id'))
         let dataModal = document.getElementById("dataModal")
         dataModal.innerText = `${JSON.stringify(fields)}`
       });

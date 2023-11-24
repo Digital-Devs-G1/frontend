@@ -24,7 +24,7 @@ async function setButtonsEvent(container)
     let handler = {
         details: async (id) => {
           
-          let fields = await ReportService.getFieldTemplates(id)
+          let fields = await ReportService.getReportFields(id)
           let dataModal = document.getElementById("dataModal")
           dataModal.innerText = `${JSON.stringify(fields)}`
         },

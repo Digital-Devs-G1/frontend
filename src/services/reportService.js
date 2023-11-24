@@ -31,6 +31,13 @@ async function getPendingApprovals()
     return getData(result);
 }
 
+async function getReportFields(id)
+{
+    let result = await ReportRepository.getReportFields(id);
+    return getData(result);
+}
+
+
 async function addNewReport(newReport)
 {
     let result = await ReportRepository.addNewReport(newReport);
@@ -59,7 +66,8 @@ const ReportService = {
     getReports : getReports,
     addNewReport : addNewReport,
     getFieldTemplates: getFieldTemplates,
-    getReportTemplates: getReportTemplates
+    getReportTemplates: getReportTemplates,
+    getReportFields:getReportFields
 }
 
 export default ReportService;
