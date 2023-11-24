@@ -87,7 +87,7 @@ const getPayload = (token) =>{
 }
 
 const base64UrlDecode = (str) => {
-  const base64 = str.replace(/-/g, '+').replace(/_/g, '/');
+  let base64 = str.replace(/-/g, '+').replace(/_/g, '/');
   const padding = base64.length % 4;
   if (padding) {
     base64 += '='.repeat(4 - padding);
