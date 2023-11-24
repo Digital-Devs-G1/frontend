@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () =>
 {
     let selectedOption = AuthController.historyMenuIndex;
     let headerMenuItems = AuthController.headerMenuOptions(
-        selectedOption
+      selectedOption
     );
     let reports = await ReportService.getReports();
     HistoryView.render(headerMenuItems, reports);
@@ -19,12 +19,15 @@ document.addEventListener('DOMContentLoaded', async () =>
     setButtonsEvent(container);
 });
 
-function setButtonsEvent(container) 
+async function setButtonsEvent(container) 
 {
     let detailButtons = container.querySelectorAll(".detailsButton");
     detailButtons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        alert(`details of ${button.getAttribute('item-id')}`)
+      button.addEventListener("click",async function () {
+
+        let fields = await ReportService.getFieldTemplates(button.getAttribute('item-id'))
+        let dataModal = document.getElementById("dataModal")
+        dataModal.innerText = `${JSON.stringify(fields)}`
       });
     });
 }

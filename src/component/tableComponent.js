@@ -20,7 +20,7 @@ function render(container, menuHeader, menuItems, buttonsClassName, buttons) {
                     .join("")}
                     <td class="${buttonsClassName}">
                       ${buttons.map((button) => {
-                          return `<button item-id="${item.id}" type="button" class="${button.class} btn customButton">
+                          return `<button id="" ${button.modal&&button.modal} item-id="${item.id}" type="button" class="${button.class} btn customButton">
                               ${button.name}
                             </button>`
                       })

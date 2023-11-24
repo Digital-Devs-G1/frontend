@@ -61,9 +61,10 @@ function getTableRows(reports)
 function getButtons() 
 {
     return [
-        {
+        { 
             name: "Details",
             class: "detailsButton",
+            modal:`data-bs-toggle="modal" data-bs-target="#detail"`
         }
     ];
 }

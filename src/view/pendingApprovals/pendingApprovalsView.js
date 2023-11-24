@@ -54,8 +54,9 @@ function getButtons()
 {
     return [
         {
-            name: "Detalles",
-            class: "detailsButton",
+          name: "Detalles",
+          class: "detailsButton",
+          modal:`data-bs-toggle="modal" data-bs-target="#detail"`
         },
         {
             name: "Aprovar",

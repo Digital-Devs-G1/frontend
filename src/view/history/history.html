@@ -65,6 +65,31 @@
       </table>
     </section>
 
+    <!-- Modal -->
+    <div class="modal fade" id="detail" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Detalles</h5>
+                </div>
+                <div class="modal-body">
+                
+                    <div action="" id="form-modal">
+                        <h4>Info</h2>
+                        <p id= "dataModal"></p>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button id="comprarTicket" class="btn btn-comprar"></button> -->
+                    <button id="close" type="button" class="btn btn-comprar" data-bs-dismiss="modal">salir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <script type="module" src="./historyView.js"></script>
     <script type="module" src="../../controller/historyController.js"></script>
 </body>

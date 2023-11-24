@@ -22,7 +22,12 @@ document.addEventListener('DOMContentLoaded', async () =>
 async function setButtonsEvent(container) 
 {
     let handler = {
-        details: async (id) => {alert(`details of ${id}`)},
+        details: async (id) => {
+          
+          let fields = await ReportService.getFieldTemplates(id)
+          let dataModal = document.getElementById("dataModal")
+          dataModal.innerText = `${JSON.stringify(fields)}`
+        },
         approve: async (id) => {
           if (await ReportService.accept(id)) {
             let row = container.querySelector(`tr[tr-id="${id}"]`);
