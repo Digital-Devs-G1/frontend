@@ -26,8 +26,12 @@ async function setButtonsEvent(container)
       button.addEventListener("click",async function () {
 
         let fields = await ReportService.getReportFields(button.getAttribute('item-id'))
-        let dataModal = document.getElementById("dataModal")
-        dataModal.innerText = `${JSON.stringify(fields)}`
+        let modalDetail = document.getElementById("modalDetail")
+
+        fields.forEach(field => {
+          modalDetail.innerHTML += `<p>${field.label}: ${field.value}</p>`; 
+        });
+
       });
     });
 }

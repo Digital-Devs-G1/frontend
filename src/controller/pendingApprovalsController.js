@@ -25,8 +25,10 @@ async function setButtonsEvent(container)
         details: async (id) => {
           
           let fields = await ReportService.getReportFields(id)
-          let dataModal = document.getElementById("dataModal")
-          dataModal.innerText = `${JSON.stringify(fields)}`
+          let modalDetail = document.getElementsByClassName("pendingModal")
+          fields.forEach(field => {
+            modalDetail.innerHTML += `<p>${field.label}: ${field.value}</p>`; 
+          });
         },
         approve: async (id) => {
           if (await ReportService.accept(id)) {
