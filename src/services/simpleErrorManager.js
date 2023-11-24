@@ -1,4 +1,4 @@
-export default async function getData(result)
+export async function getData(result)
 {
     if(result == null || result.status == 401)
     {
@@ -23,4 +23,20 @@ export default async function getData(result)
         // 409
         // 422
         // 500
+}
+
+export async function booleanResponse(result, msgOk, errorMsg)
+{
+    if (result.ok)
+    {
+        if(msgOk)
+            alert(msgOk)
+        result = true;
+    } else
+    {
+        if(errorMsg)
+            alert(errorMsg);
+        result = false;
+    }
+    return result;
 }

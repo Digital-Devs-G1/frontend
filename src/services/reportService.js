@@ -1,5 +1,17 @@
 import ReportRepository from "../Repository/reportApi/reportRepository.js";
-import getData from "./simpleErrorManager.js";
+import {getData, booleanResponse} from "./simpleErrorManager.js";
+
+async function dismiss(id)
+{
+    let result = await ReportRepository.dismiss(id);
+    return booleanResponse(result);
+};
+
+async function accept(id)
+{
+    let result = await ReportRepository.accept(id);
+    return booleanResponse(result);
+};
 
 async function getFieldTemplates(id)
 {
@@ -41,6 +53,8 @@ async function getReports()
 }
 
 const ReportService = {
+    dismiss : dismiss,
+    accept : accept,
     getPendingApprovals : getPendingApprovals,
     getReports : getReports,
     addNewReport : addNewReport,

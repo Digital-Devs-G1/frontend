@@ -1,5 +1,5 @@
 import LoginRepository from "../Repository/loginApi/loginRepository.js";
-import getData from "./simpleErrorManager.js";
+import {getData} from "./simpleErrorManager.js";
 
 async function login(credentials)
 {

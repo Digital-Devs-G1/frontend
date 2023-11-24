@@ -1,5 +1,19 @@
 import {HttpMethod, defaultOptions, safeFetch } from '../safe-fetch.js'; 
-import {ReportTemplateUrlBuilder, ReportUrlBuilder} from './report-api-urls.js';
+import {ReportTemplateUrlBuilder, ReportTrackingUrlBuilder, ReportUrlBuilder} from './report-api-urls.js';
+
+async function dismiss(id)
+{
+    const url = new ReportTrackingUrlBuilder().dismiss(id);
+    const options = defaultOptions(HttpMethod.post); 
+    return await safeFetch(url, options);
+};
+
+async function accept(id)
+{
+    const url = new ReportTrackingUrlBuilder().accept(id);
+    const options = defaultOptions(HttpMethod.post); 
+    return await safeFetch(url, options);
+};
 
 async function getFieldTemplates(id)
 {
@@ -37,6 +51,8 @@ async function addNewReport(newReport)
 };
 
 const ReportTemplateRepository = {
+    dismiss,
+    accept,
     getPendingApprovals,
     getFieldTemplates,
     getReportTemplates,

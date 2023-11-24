@@ -13,7 +13,7 @@ function render(container, menuHeader, menuItems, buttonsClassName, buttons) {
             ${menuItems
               .map((item) => {
                 return `
-                <tr>
+                <tr tr-id="${item.id}">
                     ${item.columns.map((column) => {
                       return `<td class="${column.class}" scope="row">${column.value}</td>`
                     })
