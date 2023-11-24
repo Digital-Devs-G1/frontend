@@ -1,6 +1,7 @@
 import PendingApprovalsView from "../view/pendingApprovals/pendingApprovalsView.js";
 import AuthController from "./authController.js";
 import ReportService from "../services/reportService.js";
+import LoginOut from "./loginOutController.js";
 
 document.addEventListener('DOMContentLoaded', async () => 
 {
@@ -10,6 +11,10 @@ document.addEventListener('DOMContentLoaded', async () =>
     );
     let reports = await ReportService.getReports();
     PendingApprovalsView.render(headerMenuItems, reports);
+
+    const button = document.getElementById("login-out-button");
+    LoginOut.event(button);
+
     let container = document.querySelector("section.customCard");
     setButtonsEvent(container);
 });
