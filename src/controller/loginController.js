@@ -8,11 +8,21 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault(); // Evitar que el formulario se envíe automáticamente
         const json = await getFieldsLogin();
         if (json !== null && await login(json))
-            window.location.href = "../newReport/newReport.html";
+          window.location.href = getNextPage();
         else
             LoginView.showLoginFormFeedback(["Credenciales invalidas"]);
     });
 });
+
+function getNextPage() 
+{
+  const currentUrl = window.location.search;
+  const urlParams = new URLSearchParams(currentUrl);
+  const lastVisitedUrl = urlParams.get("href");
+  if (lastVisitedUrl === null)
+    return "../newReport/newReport.html"; 
+  return lastVisitedUrl;
+}
 
 async function login(credentials)
 {

@@ -31,3 +31,23 @@
     font-size: 2rem;
     color: var(--custum-light-blue);
 }
+
+.navbar-brand{
+    margin-right: auto;
+}
+
+#login-out-button {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+}
+
+@media (max-width: 990px) {
+    #proyectLogo {
+        position: relative;
+        top: 0rem;
+    }
+    #login-out-container {
+        margin-left: auto;
+    }
+}

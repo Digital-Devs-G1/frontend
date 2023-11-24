@@ -32,10 +32,10 @@ function render(menuItems, container) {
                         .join("")}
                     </ul>
                 </div>
-                <div class="btn-group dropstart">
+                <div class="btn-group dropstart" id="login-out-container">
                     <i id="userAccountIcon" class="bi bi-person-circle" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></i>
                     <ul class="dropdown-menu text-center mt-1">
-                        <li>Cerrar sesion</li>
+                        <li><button type="button" id="login-out-button">Cerrar sesión</button></li>
                     </ul>
                 </div>
             </div>

@@ -38,7 +38,10 @@ async function safeFetch(url, options)
 {
     try
     {
-        return await fetch(url, options);
+        const result = await fetch(url, options);
+        if(result.status === 401)
+            window.location.href = `../login/login.html?href=${window.location.href}`;
+        return result;
     }
     catch (error) 
     {
