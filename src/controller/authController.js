@@ -12,15 +12,27 @@ function headerMenuOptions(selectedMenuOption)
         {
             name: "Historial",
             href: "../history/history.html"
-        },
-        {
+        }
+    ];
+
+    if(isAdmin()){
+        let optionView = {
             name: "Aprobaciones Pendientes",
             href: "../pendingApprovals/pendingApprovals.html"
         }
-    ];
+        menuOptions.push(optionView);
+    }  
+
     menuOptions[selectedMenuOption]["selected"] = true;
     return menuOptions;
 }
+
+const isAdmin = () =>{
+    let data = JSON.parse(localStorage.getItem("data"));
+
+    return data.rol === "Admin";
+}
+
 
 const AuthController = {
     pendingApprovalsMenuIndex : pendingApprovalsMenuIndex,
