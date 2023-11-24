@@ -1,6 +1,8 @@
 const newReportMenuIndex = 0;
 const historyMenuIndex = 1;
 const pendingApprovalsMenuIndex = 2;
+const management = 3;
+
 
 function headerMenuOptions(selectedMenuOption) 
 {
@@ -16,6 +18,10 @@ function headerMenuOptions(selectedMenuOption)
         {
             name: "Aprobaciones Pendientes",
             href: "../pendingApprovals/pendingApprovals.html"
+        },
+        {
+            name: "Administracion",
+            href: "../management/management.html"
         }
     ];
     menuOptions[selectedMenuOption]["selected"] = true;
@@ -26,6 +32,7 @@ const AuthController = {
     pendingApprovalsMenuIndex : pendingApprovalsMenuIndex,
     newReportMenuIndex : newReportMenuIndex,
     historyMenuIndex : historyMenuIndex,
+    management: management,
     headerMenuOptions : headerMenuOptions
 }
 

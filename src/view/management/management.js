@@ -1,5 +1,3 @@
-// import GridFields from "../../component/gridFieldComponent.js";
-// import SelectOptions from "../../component/selectOptionsComponent.js";
 import HeaderComponent from "../../component/headerComponent.js";
 
 function render(menuItems) 
@@ -11,8 +9,6 @@ function render(menuItems)
 const rolSelect = document.getElementById('rol');
 function addRoles(roles)
 {
-  // SelectOptions.render(payload, templateSelect);
-
   rolSelect.innerHTML += '<option value="" disabled selected>Selecciona un rol</option>'
 
   roles.result.forEach((rol) => {
@@ -26,8 +22,6 @@ function addRoles(roles)
 const positionSelect = document.getElementById('position');
 function addPositions(positions)
 {
-  // SelectOptions.render(payload, templateSelect);
-
   positionSelect.innerHTML += '<option value="" disabled selected>Selecciona una posicion</option>'
 
   positions.forEach((position) => {
@@ -52,7 +46,19 @@ function addDepartment(deparment)
     deparmenteSelect.appendChild(option);
   });
 }
+const superiorSelect = document.getElementById('superior');
 
+function addSuperior(superior)
+{
+  superiorSelect.innerHTML += '<option value="" disabled selected>Selecciona superior</option>'
+
+  superior.forEach((sup) => {
+    let option = document.createElement("option");
+    //option.value = dep.departmentId;
+    //option.text = dep.name;
+    //deparmenteSelect.appendChild(option);
+  });
+}
 
 
 const lastName = document.getElementById("lastName");
@@ -67,17 +73,6 @@ function validarForm(){
   });
 
   return checkCampos();
-
-  // if(checkCampos()){
-  //     //formError.classList.remove("form_mensajeError-active");
-  //     console.log("esta correcto!!!")
-
-  //     return true;
-  //     // desactivar boton
-  // }else{
-  //   return false;
-  // }
-
 }
 
 function createUserRequest()
@@ -93,15 +88,10 @@ function createUserRequest()
     positionId: positionSelect.value,
     superiorId: null
   };
-  console.log(user);
   return user;
 }
 
 const inputs=[...document.querySelectorAll(".form_input")]; 
-
-const validedInput = (value) => {
-  return (value === "" || valorInput1.length > 50 )
-}
 
 const campos={
   firstName:false,
@@ -171,6 +161,19 @@ const validarCampo=(input)=>{
   }
 }
 
+
+const validarDepartamento=(input)=>{
+
+  if (input.value==="" || (input.value.length > 50) ) {
+    valueWrong(input);
+    return false;
+  }else{
+    valueRight(input);
+
+    return true;
+  }
+}
+
 const valueWrong =(input)=>{
   const padre = input.parentElement;
   padre.className="form_grupo-incorrecto";
@@ -180,6 +183,12 @@ const valueRight =(input)=>{
   const padre = input.parentElement;
   padre.classList.remove("form_grupo-incorrecto");
 }
+
+
+// const addSuperior =(input)=>{
+//   const padre = input.parentElement;
+//   padre.classList.remove("form_grupo-incorrecto");
+// }
 
 const managementView = {
   addRoles,

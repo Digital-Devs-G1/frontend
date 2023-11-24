@@ -22,6 +22,17 @@ async function getDepartments()
 async function insertUser(request)
 {
     let result = await managementRepository.register(request);
+
+    if(result.status === 201){
+
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Usuario creado",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
     return getData(result);
 };
 

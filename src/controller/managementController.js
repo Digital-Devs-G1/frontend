@@ -7,7 +7,7 @@ const formUser = document.getElementById("formUser");
 
 document.addEventListener('DOMContentLoaded', async () => 
 {
-    let selectedOption = AuthController.newReportMenuIndex;
+    let selectedOption = AuthController.management;
     let headerMenuItems = AuthController.headerMenuOptions(
         selectedOption
     );
@@ -33,14 +33,10 @@ document.addEventListener('DOMContentLoaded', async () =>
 
 
 const crearUsuario = async ()=>{
-    console.log("bb")
-
+    
     if(managementView.validarForm()){
-        console.log("aaa")
+    
         let request = managementView.createUserRequest();
         await ManagementService.insertUser(request);
-    } else;{
-        console.log("nop")
-
-    }
+    }        
 };
