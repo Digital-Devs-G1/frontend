@@ -27,7 +27,8 @@ async function setButtonsEvent(container)
 
         let fields = await ReportService.getReportFields(button.getAttribute('item-id'))
         let modalDetail = document.getElementById("modalDetail")
-
+        modalDetail.innerHTML = "";
+        
         fields.forEach(field => {
           modalDetail.innerHTML += `<p>${field.label}: ${field.value}</p>`; 
         });
