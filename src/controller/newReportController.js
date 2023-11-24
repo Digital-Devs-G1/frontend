@@ -1,6 +1,7 @@
 import ReportService from "../services/reportService.js";
 import NewReportView from "../view/newReport/newReportView.js";
 import AuthController from "./authController.js";
+import LoginOut from "./loginOutController.js";
 
 document.addEventListener('DOMContentLoaded', async () => 
 {
@@ -9,6 +10,9 @@ document.addEventListener('DOMContentLoaded', async () =>
         selectedOption
     );
     NewReportView.render(headerMenuItems);
+
+    const element = document.getElementById("login-out-button");
+    LoginOut.event(element);
 
     let payload = await ReportService.getReportTemplates();
     NewReportView.addTemplateOptions(payload);
