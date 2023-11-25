@@ -18,7 +18,7 @@
 
 #headerMenu ul {
     display: flex;
-    align-items: baseline;
+    align-items: center;
 }
 
 #headerMenu .active {
@@ -47,7 +47,10 @@
         position: relative;
         top: 0rem;
     }
-    #login-out-container {
-        margin-left: auto;
+    #login-out-container{
+        order: 1 !important;
+    }
+    #headerMenu {
+        order: 2 !important;
     }
 }
