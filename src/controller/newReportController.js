@@ -1,5 +1,5 @@
 import ReportService from "../services/reportService.js";
-import NewReportView from "../view/newReport/newReportView.js";
+import {NewReportView,contadorDeCampos} from "../view/newReport/newReportView.js";
 import AuthController from "./authController.js";
 import LoginOut from "./loginOutController.js";
 
@@ -24,6 +24,24 @@ document.addEventListener('DOMContentLoaded', async () =>
     button.addEventListener('click', async () => { 
         if(await saveReport())
             NewReportView.cleanFields();
+    });
+
+    //modal
+
+    let btnAddField = document.getElementById("btnAddField");
+    NewReportView.addDataTypeOptions();
+    btnAddField.addEventListener('click',()=>{
+        event.preventDefault();
+        NewReportView.addField()
+    })
+
+    document.getElementById("modalClose").addEventListener('click',()=>{
+        NewReportView.cleanModal()
+    })
+
+    let createReport = document.getElementById('insertReport');
+    createReport.addEventListener('click', async () => { 
+       await createTemplate();
     });
 });
 
@@ -80,4 +98,37 @@ async function saveReport()
         "fields":fieldsArray
     };
     return await ReportService.addNewReport(newReport);
+}
+
+
+async function createTemplate()
+{
+    let inputNameTemplate = document.getElementById('inputNameTemplate');
+
+    let length = contadorDeCampos;
+    console.log(length);
+    const fieldsArray = [];
+    
+    for (let i = 1; i < length+1; i++) {
+        
+        let id = `dataTypeField${i}`;
+        let inputDataType = document.getElementById(id);
+
+        let inputName = document.getElementById(`nameField${i}`);
+
+        let field = {
+            "name": inputName.value,
+            "dataTypeId": inputDataType.value
+        };
+        fieldsArray.push(field);
+    }
+
+    let newTemplate = {
+        "reportTemplateName": inputNameTemplate.value,
+        "fieldTemplates":fieldsArray
+    };
+    
+    let template = await ReportService.createTemplate(newTemplate);
+    let option = [template];
+    NewReportView.addTemplateOptions(option);
 }

@@ -21,13 +21,64 @@
     <header></header>
 
     <section class="customCard">
+
         <select id="templateSelect" class="form-select field" aria-label="Default select example">
             <option value="-1" selected>Template de Reporte</option>
         </select>
+    
         <div id="fieldsGrid" class="field">
         </div>
+        
+        <button id="btnCreateReport" class="btn-createReport"  data-bs-toggle="modal" data-bs-target="#createReport">
+            +
+            <div class="descripcion">Crear nuevo report</div>
+        </button>
+
         <button id="saveReport" type="button" class="btn customButton">Reportar Gasto</button>
     </section>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="createReport" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Crear template</h5>
+                    <button id="modalClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" id="form-modal">
+                        <label  class="form-label">Nombre del template</label>
+                        <input id="inputNameTemplate" class="form_input input-modal form-control mb-3" type="text">
+
+                        <div class="title">
+                            <h4>Campos variables</h4>
+                            <button class="btn-modal" id="btnAddField">agregar campo</button>
+                        </div>
+
+                        <div id="templateFields" class="templateFields"> 
+                            <div class="templateField">
+                                <label  class="form-label">Nombre del campo</label>
+                                <input id="nameField1" class="form_input input-modal form-control mb-2" type="text">
+                                <select id="dataTypeField1" class="dataTypeSelect form-select" aria-label="Default select example"></select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer center">
+                    <button id="insertReport" class="btn btn-modal" data-bs-dismiss="modal">Crear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
 
     <script type="module" src="./newReportView.js"></script>
     <script type="module" src="../../controller/newReportController.js"></script>

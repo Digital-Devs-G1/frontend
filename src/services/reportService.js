@@ -59,6 +59,12 @@ async function getReports()
     return getData(result);
 }
 
+async function createTemplate(template){
+
+    let result = await ReportRepository.createTemplate(template);
+    return getData(result);
+}
+
 const ReportService = {
     dismiss : dismiss,
     accept : accept,
@@ -67,7 +73,8 @@ const ReportService = {
     addNewReport : addNewReport,
     getFieldTemplates: getFieldTemplates,
     getReportTemplates: getReportTemplates,
-    getReportFields:getReportFields
+    getReportFields:getReportFields,
+    createTemplate:createTemplate
 }
 
 export default ReportService;

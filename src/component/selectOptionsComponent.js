@@ -1,6 +1,6 @@
 function getOptionHtml(item)
 {
-    return `<option value="${item.reportTemplateId}">${item.reportTemplateName}</option >`;
+    return `<option value="${item.id}">${item.name}</option >`;
 }
 
 function render(data, container) 
