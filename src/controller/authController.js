@@ -21,10 +21,6 @@ function headerMenuOptions(selectedMenuOption)
         let optionView = {
             name: "Aprobaciones Pendientes",
             href: "../pendingApprovals/pendingApprovals.html"
-        },
-        {
-            name: "Administracion",
-            href: "../management/management.html"
         }
         menuOptions.push(optionView);
     }  
