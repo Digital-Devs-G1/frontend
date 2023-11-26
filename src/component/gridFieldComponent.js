@@ -20,7 +20,7 @@ function getBooleanButtonHtml(item)
     <label class="btn btn-outline-primary" for="btncheck${item.id}">${item.name} Off</label>`;
 }
 
-function getInputHtml(item, inputType)
+function getInputHtml(item, inputType)  
 {
   return `
     <div class="input-group">
