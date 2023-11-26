@@ -1,6 +1,6 @@
 export async function getData(result)
 {
-    if(result == null || result.status == 401)
+    if(result === null || result.status === 401)
     {
         alert("Error en la comunicacion con la API");
         return null;
@@ -12,7 +12,7 @@ export async function getData(result)
         return await result.json();
     }
 
-    if(result.status == 404)
+    if(result.status === 404)
         return null;
     // PORQUE EL 404 NO LO PARSEA??????
     const errorResponse = await result.json();

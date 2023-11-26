@@ -1,6 +1,8 @@
 const newReportMenuIndex = 0;
 const historyMenuIndex = 1;
 const pendingApprovalsMenuIndex = 2;
+const management = 3;
+
 
 function headerMenuOptions(selectedMenuOption) 
 {
@@ -19,6 +21,10 @@ function headerMenuOptions(selectedMenuOption)
         let optionView = {
             name: "Aprobaciones Pendientes",
             href: "../pendingApprovals/pendingApprovals.html"
+        },
+        {
+            name: "Administracion",
+            href: "../management/management.html"
         }
         menuOptions.push(optionView);
     }  
@@ -37,6 +43,7 @@ const AuthController = {
     pendingApprovalsMenuIndex : pendingApprovalsMenuIndex,
     newReportMenuIndex : newReportMenuIndex,
     historyMenuIndex : historyMenuIndex,
+    management: management,
     headerMenuOptions : headerMenuOptions
 }
 
