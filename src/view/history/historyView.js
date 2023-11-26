@@ -1,5 +1,6 @@
 import HeaderComponent from "../../component/headerComponent.js";
 import TableComponent from "../../component/tableComponent.js";
+import DetailController from "../../controller/detailController.js";
 
 function getMenuHeader() {
   return [
@@ -29,7 +30,6 @@ function getMenuHeader() {
 function getTableRows(reports) 
 {
   let items = [];
-  console.log(reports);
   reports.forEach(report => {
     let newIem = {
       id: report.reportId,
@@ -64,7 +64,7 @@ function getButtons()
         { 
             name: "Details",
             class: "detailsButton",
-            modal:`data-bs-toggle="modal" data-bs-target="#detail"`
+            modal:`data-bs-toggle="modal" data-bs-target="#detailModal"`
         }
     ];
 }
@@ -73,13 +73,15 @@ function render(menuItems, reports)
 {
     let header = document.querySelector("header");
     HeaderComponent.render(menuItems, header);
+    let section = document.querySelector("section.customCard");
     TableComponent.render(
-      document.querySelector("section.customCard"),
+      section,
       getMenuHeader(),
       getTableRows(reports),
       "historyButtons",
       getButtons()
     );
+    DetailController.initComponent(section)
 };
 
 const HistoryView = {

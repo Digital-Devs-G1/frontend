@@ -33,7 +33,6 @@ const isAdmin = () =>{
     return data.rol === "Admin";
 }
 
-
 const AuthController = {
     pendingApprovalsMenuIndex : pendingApprovalsMenuIndex,
     newReportMenuIndex : newReportMenuIndex,
