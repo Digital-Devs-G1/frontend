@@ -5,3 +5,8 @@
 .customTableDate {
     min-width: 7rem;
 }
+
+.emptyList {
+    font-size: 1rem;
+    margin-bottom: 0px;
+}

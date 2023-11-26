@@ -74,14 +74,14 @@ function cleanModal(){
     document.getElementById('inputNameTemplate').value = '';
     const templateFields = document.getElementById('templateFields');
     templateFields.innerHTML = "";
-    templateFields.innerHTML = `<div class="templateField">
-    <label class="form-label">Nombre del campo</label>
-    <input id="nameField1" class="form_input input-modal form-control mb-2" type="text">
-    <select id="dataTypeField1" class="dataTypeSelect form-select" aria-label="Default select example"></select>
-    </div>`;
+    templateFields.innerHTML = `
+        <div class="templateField">
+            <label class="form-label">Nombre del campo</label>
+            <input id="nameField1" class="form_input input-modal form-control mb-2" type="text">
+            <select id="dataTypeField1" class="dataTypeSelect form-select" aria-label="Default select example"></select>
+        </div>`;
     addDataTypeOptions();
 }
-
 
 const NewReportView = {
     render,
