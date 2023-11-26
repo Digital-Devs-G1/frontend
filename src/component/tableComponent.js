@@ -1,6 +1,6 @@
 function render(container, menuHeader, menuItems, buttonsClassName, buttons) {
   let result = `
-    <table class="table customTable">
+    <table class="table customTable table-hover">
         <thead>
             <tr>
                 ${menuHeader.map((column) => {

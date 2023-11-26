@@ -4,10 +4,13 @@ export async function getData(result)
     {
         alert("Error en la comunicacion con la API");
         return null;
-    }            
-    if (result.ok)
+    } 
+
+    if (result.ok){
         // evaluar 204
+        
         return await result.json();
+    }
 
     if(result.status == 404)
         return null;

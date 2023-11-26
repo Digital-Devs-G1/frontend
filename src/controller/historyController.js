@@ -30,7 +30,7 @@ async function setButtonsEvent(container)
         modalDetail.innerHTML = "";
         
         fields.forEach(field => {
-          modalDetail.innerHTML += `<p>${field.label}: ${field.value}</p>`; 
+          modalDetail.innerHTML += `<p><span>${field.label}: </span>${field.value}</p>`; 
         });
 
       });

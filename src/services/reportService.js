@@ -43,11 +43,24 @@ async function addNewReport(newReport)
     let result = await ReportRepository.addNewReport(newReport);
     if (result.ok)
     {
-        alert("Reporte registrado")
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Reporte registrado",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        
         result = true;
     } else
     {
-        alert("No se pudo registrar el reporte");
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: "error al registrar",
+            showConfirmButton: false,
+            timer: 1500
+        });
         result = false;
     }
     return result;
@@ -62,6 +75,18 @@ async function getReports()
 async function createTemplate(template){
 
     let result = await ReportRepository.createTemplate(template);
+
+    if(result.status === 201){
+
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Template creado",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+
     return getData(result);
 }
 

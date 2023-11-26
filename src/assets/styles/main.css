@@ -10,7 +10,7 @@
     --eerie-black: #1A1A1B;
     --slate-gray: #70798C;
     --error-red : #ff3333;
-  }
+}
 
 :root {
     --custum-light-blue: #3598db;
@@ -54,4 +54,20 @@ body {
 
 .customTableDate {
     min-width: 7rem;
+}
+
+
+.modal-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pendingModal{
+    width: 70%;
+}
+
+.detailModal p span {
+    font-weight: bold;
+    color: #06AED5; 
 }
