@@ -15,7 +15,7 @@ function headerMenuOptions(selectedMenuOption)
         }
     ];
 
-    if(isAdmin()){
+    if(isApprover()){
         let optionView = {
             name: "Aprobaciones Pendientes",
             href: "../pendingApprovals/pendingApprovals.html"
@@ -27,10 +27,10 @@ function headerMenuOptions(selectedMenuOption)
     return menuOptions;
 }
 
-const isAdmin = () =>{
+const isApprover = () =>{
     let data = JSON.parse(localStorage.getItem("data"));
 
-    return data.rol === "Admin";
+    return data.isApprover === "True";
 }
 
 const AuthController = {
