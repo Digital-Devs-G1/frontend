@@ -6,9 +6,9 @@ export async function getData(result)
         return null;
     } 
 
+    if(result.status === 204 || result.status === 201)
+        return true;
     if (result.ok){
-        // evaluar 204
-        
         return await result.json();
     }
 

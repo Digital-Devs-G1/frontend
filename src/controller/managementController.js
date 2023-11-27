@@ -25,8 +25,10 @@ document.addEventListener('DOMContentLoaded', async () =>
     createButton.addEventListener("click", function (event) {
         event.preventDefault();
         //crearUsuario();
-        let request = createRequestBody();
+        let option = abmSelect.options[abmSelect.selectedIndex].value;
+        let request = createRequestBody(option);
         console.log(request);
+        ManagementService.insertUser(request);
     });
 });
 
@@ -119,7 +121,7 @@ const crearUsuario = async ()=>{
 };
 */
 
-function createRequestBody()
+function createRequestBody(abmName)
 {
     const inputs = document.querySelectorAll('#fieldsGrid .input-group');
     let requestBody = {}
@@ -135,7 +137,37 @@ function createRequestBody()
             withoutErrors = false;
     }
     requestBody["companyId"] = AuthController.getCompany();
+    addExtraDtoField(requestBody, abmName);
     return (withoutErrors) ? requestBody : null;
+}
+
+function addExtraDtoField(requestBody, abmName)
+{
+    switch (abmName) {
+        case "usuario":
+            addExtraUserDtoFields(requestBody);
+            break;
+        case "reportTemplate":
+            addExtraReportTemplateDtoFields(requestBody)
+            break;
+    }
+}
+
+function addExtraUserDtoFields(requestBody)
+{
+    let deparmentSelect = document.getElementById('department');
+    let positionSelect = document.getElementById('position');
+    let superiorSelect = document.getElementById('superior');
+    let roleSelect = document.getElementById('rol');
+    let option = deparmentSelect.options[deparmentSelect.selectedIndex].value;
+    requestBody["departmentId"] = option;
+    option = positionSelect.options[positionSelect.selectedIndex].value;
+    requestBody["positionId"] = option;
+    option = superiorSelect.options[superiorSelect.selectedIndex].value;
+    requestBody["superiorId"] = (option==-1)?null:option;
+    option = roleSelect.options[roleSelect.selectedIndex].value;
+    requestBody["idRol"] = option;
+    return requestBody;
 }
 
 function validateField(input)
