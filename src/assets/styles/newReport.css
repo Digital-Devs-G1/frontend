@@ -12,45 +12,6 @@
     min-width: 10rem;
 }
 
-
-.btn-createReport {
-    width: 50px;
-    height: 50px;
-    background-color: #3498db;
-    color: #fff;
-    text-decoration: none;
-    border: none;
-    border-radius: 50%;
-    position: relative;
-    cursor: pointer;
-}
-
-.btn-createReport:hover {
-    background-color: #2980b9;
-}
-
-.btn-createReport .descripcion {
-    visibility: hidden;
-    width: 200px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -100px;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.btn-createReport:hover .descripcion {
-    visibility: visible;
-    opacity: 1;
-}
-
 .templateFields{
     display: grid;
     grid-template-columns: 1fr;

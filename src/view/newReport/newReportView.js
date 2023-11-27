@@ -15,6 +15,7 @@ function addTemplateOptions(payload)
     let list = payload.map((item) =>{ 
         return {id:item.reportTemplateId,name:item.reportTemplateName}
     });
+    list.push({id:"-2",name:"Nuevo Template"});
 
     SelectOptions.render(list, templateSelect);
 }

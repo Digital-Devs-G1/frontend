@@ -5,7 +5,16 @@
 .pendingApprovalsButtons {
     min-width: 20rem;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-self: center;
     gap: 0.2rem;
 }
+
+@media (max-width: 650px) {
+    .pendingApprovalsButtons {
+        flex-direction: column;
+        min-width: 6rem;
+    }
+}
+

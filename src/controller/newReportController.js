@@ -48,6 +48,12 @@ document.addEventListener('DOMContentLoaded', async () =>
 async function showTemplateHandler(event) {
     if(event.target.value === "-1")
         NewReportView.hideFields();
+    else if(event.target.value === "-2")
+    {
+        let modal = document.getElementById('createReport'); 
+        let createReportModal = new bootstrap.Modal(modal);
+        createReportModal.show();
+    }
     else
     {
         let payload = await ReportService.getFieldTemplates(

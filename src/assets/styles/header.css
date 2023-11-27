@@ -16,6 +16,12 @@
     top: 0.8rem;
 }
 
+@media (max-width: 475px) {
+    #proyectLogo  {
+        height: 1.3rem;
+    }
+}
+
 #headerMenu ul {
     display: flex;
     align-items: center;

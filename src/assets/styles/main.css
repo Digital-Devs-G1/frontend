@@ -17,6 +17,7 @@
 }
 
 body {
+    min-width: 240px;
     display: flex;
     justify-content: center; 
     flex-direction: column; 

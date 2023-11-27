@@ -2,48 +2,55 @@ import TableComponent from "../../component/tableComponent.js";
 import HeaderComponent from "../../component/headerComponent.js";
 import DetailController from "../../controller/detailController.js";
 
-function getMenuHeader() {
-  return [
-    {
+function getMenuHeader(windowSize) {
+  let columns = []
+  if(--windowSize >= 0)
+    columns.push({
       name: "Fecha",
       class: "",
-    },
-    {
+    });
+  if(--windowSize >= 0)
+    columns.push({
+      name: "Importe",
+      class: ""
+    });
+  if(--windowSize >= 0)
+    columns.push({
       name: "Descripcion",
       class: "",
-    },
-    {
-      name: "Importe",
-      class: "",
-    },
-    {
-      name: "Acciones",
-      class: "text-center",
-    },
-  ];
+    });
+  columns.push({
+    name: "Acciones",
+    class: "text-center",
+  });
+  return columns;
 }
 
-function getTableRows(reports) 
+function getTableRows(reports, windowSize) 
 {
   let items = [];
   reports.forEach(report => {
+    let windowSizeCopy = windowSize;
     let newIem = {
       id: report.reportId,
       columns: [
-        {
-          class : "customTableDate",
-          value : report.dateTracking 
-        },
-        {
-          class : "",
-          value : report.description
-        },
-        {
-          class : "",
-          value : report.amount 
-        }
       ]
     }
+    if(--windowSizeCopy >= 0)
+      newIem.columns.push({
+        class : "customTableDate",
+        value : report.dateTracking 
+      });
+    if(--windowSizeCopy >= 0)
+      newIem.columns.push({
+        class : "",
+          value : report.amount 
+    });
+    if(--windowSizeCopy >= 0)
+    newIem.columns.push({
+      class : "",
+      value : report.description
+    });
     items.push(newIem);
   });
   
@@ -69,23 +76,23 @@ function getButtons()
     ];
 }
 
-function render(menuItems, reports) 
+function render(menuItems, reports, getReportFields, windowSize=3) 
 {
   let header = document.querySelector("header");
   HeaderComponent.render(menuItems, header);
   let section = document.querySelector("section.customCard");
   TableComponent.render(
     section,
-    getMenuHeader(),
-    getTableRows(reports),
+    getMenuHeader(windowSize),
+    getTableRows(reports, windowSize),
     "pendingApprovalsButtons",
     getButtons()
   );
-  DetailController.initComponent(section)
+  DetailController.initComponent(section, getReportFields);
 }
 
 const PendingApprovalsView = {
-  render: render,
+  render: render
 };
 
 export default PendingApprovalsView;

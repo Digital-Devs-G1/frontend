@@ -1,8 +1,8 @@
 import DetailComponent from "../component/detailComponent.js";
-import ReportService from "../services/reportService.js";
 
 async function initComponent(
     container, 
+    getReportFields,
     buttonQuery = ".detailsButton", 
     reportIdAttribute = 'item-id'
     )
@@ -14,7 +14,7 @@ async function initComponent(
             button.addEventListener("click", async () => 
             {
                 let reportId = button.getAttribute(reportIdAttribute);
-                let fields = await ReportService.getReportFields(reportId);
+                let fields = await getReportFields(reportId);
                 DetailComponent.renderDetails(fields);
             });
         });
