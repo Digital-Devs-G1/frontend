@@ -17,8 +17,9 @@ function getBooleanButtonHtml(item)
 {
   return `
     <div class="input-group">
-      <input type="checkbox" data-type="${item.dataTypeId}" class="btn-check" id="btncheck${item.id}" autocomplete="off">
+      <input item-id=${item.id} type="checkbox" data-type="${item.dataTypeId}" class="btn-check" id="btncheck${item.id}" autocomplete="off">
       <label class="input-group-text btn btn-outline-primary button-label-check" for="btncheck${item.id}" name="${item.name}">${item.name} Off</label>
+      <p class="form_input-error">email requerido, maximo 50 caracteres.</p>
     </div>`;
 }
 
@@ -27,7 +28,8 @@ function getInputHtml(item, inputType)
   return `
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">${item.name}</span>
-        <input type="${inputType}" data-type="${item.dataTypeId}" class="form-control" placeholder="Value" aria-label="Value" aria-describedby="basic-addon1">
+        <input item-id=${item.id} type="${inputType}" data-type="${item.dataTypeId}" class="form-control" placeholder="Value" aria-label="Value" aria-describedby="basic-addon1">
+        <p class="form_input-error">email requerido, maximo 50 caracteres.</p>
     </div>`;
 }
 

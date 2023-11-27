@@ -22,16 +22,19 @@ function render(menuItems, container) {
                 </div>
                 <div class="collapse navbar-collapse order-1" id="headerMenu">
                     <ul class="navbar-nav">
-                        ${menuItems
-                        .map((item) => {
-                            return `
-                            <li class="nav-item">
-                                <a href="${item.href}" class="nav-link ${
-                            item.selected ? "active" : ""
-                            }" aria-current="page" href="#">${item.name}</a>
-                            </li>`;
-                        })
-                        .join("")}
+                        ${Object
+                            .keys(menuItems)
+                            ?.map((key) => {
+                                let item = menuItems[key];
+                                return `
+                                <li class="nav-item">
+                                    <a href="${item.href}" class="nav-link ${
+                                item.selected ? "active" : ""
+                                }" aria-current="page" href="#">${item.name}</a>
+                                </li>`;
+                            })
+                            .join("")
+                        }
                     </ul>
                 </div>
                 <div class="btn-group dropstart order-2" id="login-out-container">

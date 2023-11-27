@@ -1,7 +1,7 @@
-const newReportMenuIndex = 0;
-const historyMenuIndex = 1;
-const pendingApprovalsMenuIndex = 2;
-const management = 3;
+const newReportMenuIndex = "newReport";
+const historyMenuIndex = "history";
+const pendingApprovalsMenuIndex = "pendingApprovals";
+const management = "management";
 
 function getManagementOptions()
 {
@@ -14,23 +14,23 @@ function getManagementOptions()
 
 function headerMenuOptions(selectedMenuOption) 
 {
-    let menuOptions = [
-        {
+    let menuOptions = {
+        newReport: {
             name: "Reportar Gasto",
             href: "../newReport/newReport.html"
         },
-        {
+        history: {
             name: "Historial",
             href: "../history/history.html"
         }
-    ];
+    };
 
     if(isApprover()){
         let optionView = {
             name: "Aprobaciones Pendientes",
             href: "../pendingApprovals/pendingApprovals.html"
         }
-        menuOptions.push(optionView);
+        menuOptions["pendingApprovals"] = optionView;
     }  
 
     if(isAdmin()){
@@ -38,7 +38,7 @@ function headerMenuOptions(selectedMenuOption)
             name: "Administracion",
             href: "../management/management.html"
         }
-        menuOptions.push(optionView);
+        menuOptions["management"] = optionView;
     }  
 
     menuOptions[selectedMenuOption]["selected"] = true;
@@ -63,13 +63,18 @@ const isSuperAdmin = () =>{
     return data.rol === "SuperAdmin";
 }
 
+const getCompany = () => {
+    return JSON.parse(localStorage.getItem("data")).company;
+}
+
 const AuthController = {
     pendingApprovalsMenuIndex : pendingApprovalsMenuIndex,
     newReportMenuIndex : newReportMenuIndex,
     historyMenuIndex : historyMenuIndex,
     management: management,
     headerMenuOptions : headerMenuOptions,
-    getManagementOptions : getManagementOptions
+    getManagementOptions : getManagementOptions,
+    getCompany : getCompany
 }
 
 export default AuthController;

@@ -186,7 +186,9 @@ const managementView = {
   validarForm,
   addInputValidation,
   loadSuperiors,
-  addSuperior
+  addSuperior,
+  valueRight,
+  valueWrong
 };
 
 export default managementView;

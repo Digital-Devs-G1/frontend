@@ -6,51 +6,51 @@ const abm = {
     usuario: [
         {
             name: "Email",
-            id: "",
+            id: "email",
             dataTypeId: 2
         },
         {
             name: "Password",
-            id: "",
+            id: "password",
             dataTypeId: 2
         },
         {
             name: "Nombre",
-            id: "",
+            id: "firsName",
             dataTypeId: 2
         },
         {
             name: "Apellido",
-            id: "",
+            id: "lastName",
             dataTypeId: 2
         },
         {
             name: "Es Aprobador",
-            id: "",
+            id: "isApprover",
             dataTypeId: 4
         }
     ],
     position: [
         {
             name: "Nombre",
-            id: "",
+            id: "description",
             dataTypeId: 2
         },
         {
             name: "Jerarquia",
-            id: "",
+            id: "hierarchy",
             dataTypeId: 2
         },
         {
             name: "Max. importe aprobacion",
-            id: "",
+            id: "maxAmount",
             dataTypeId: 5
         }
     ],
     department: [
         {
             name: "Nombre",
-            id: "",
+            id: "name",
             dataTypeId: 2
         }
     ],
@@ -106,8 +106,21 @@ function cleanFields()
     }   
 }
 
+
+const valueWrong =(input)=>{
+    const padre = input.parentElement;
+    padre.className +=" form_grupo-incorrecto";
+  }
+  
+  const valueRight =(input)=>{
+    const padre = input.parentElement;
+    padre.classList.remove("form_grupo-incorrecto");
+  }
+
 const ManagementView = {
-    render
+    render,
+    valueRight,
+    valueWrong
 };
 
 export {
