@@ -6,7 +6,7 @@ const management = "management";
 function getManagementOptions()
 {
     if(isAdmin())
-        return ["usuario", "position", "department", "reportTemplate"];
+        return ["position","usuario", "department", "reportTemplate"];
     if(isSuperAdmin())
         return ["usuario", "company"]; 
     return [];
@@ -41,7 +41,9 @@ function headerMenuOptions(selectedMenuOption)
         menuOptions["management"] = optionView;
     }  
 
-    menuOptions[selectedMenuOption]["selected"] = true;
+    let position =menuOptions.findIndex(option => option.name === selectedMenuOption)  
+
+    menuOptions[position]["selected"] = true;
     return menuOptions;
 }
 

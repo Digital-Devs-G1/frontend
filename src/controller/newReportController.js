@@ -2,6 +2,7 @@ import ReportService from "../services/reportService.js";
 import {NewReportView,contadorDeCampos} from "../view/newReport/newReportView.js";
 import AuthController from "./authController.js";
 import LoginOut from "./loginOutController.js";
+import ManagementService from "../services/managementService.js";
 
 document.addEventListener('DOMContentLoaded', async () => 
 {
