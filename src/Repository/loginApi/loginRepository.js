@@ -1,4 +1,4 @@
-import {HttpMethod, unauthenticatedOptions, safeFetch } from '../safe-fetch.js'; 
+import {HttpMethod, unauthenticatedOptions, safeFetch, defaultOptions } from '../safe-fetch.js'; 
 import {LoginUrlBuilder, RolUrlBuilder} from '../loginApi/login-api-urls.js';
 
 async function login(credentials)
@@ -18,7 +18,7 @@ async function getRoles()
 async function registerUser(user)
 {
     const url = new LoginUrlBuilder().register();
-    const options = defaultOptions(HttpMethod.put, user);
+    const options = defaultOptions(HttpMethod.post, user);
     return await safeFetch(url, options);
 }
 

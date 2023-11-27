@@ -1,12 +1,12 @@
-const newReportMenuIndex = 0;
-const historyMenuIndex = 1;
-const pendingApprovalsMenuIndex = 2;
-const management = 3;
+const newReportMenuIndex = "Reportar Gasto";
+const historyMenuIndex = "Historial";
+const pendingApprovalsMenuIndex = "Aprobaciones Pendientes";
+const management = "Administracion";
 
 function getManagementOptions()
 {
     if(isAdmin())
-        return ["usuario", "position", "department", "reportTemplate"];
+        return ["position","usuario", "department", "reportTemplate"];
     if(isSuperAdmin())
         return ["usuario", "company"]; 
     return [];
@@ -39,9 +39,11 @@ function headerMenuOptions(selectedMenuOption)
             href: "../management/management.html"
         }
         menuOptions.push(optionView);
-    }  
+    }
 
-    menuOptions[selectedMenuOption]["selected"] = true;
+    let position =menuOptions.findIndex(option => option.name === selectedMenuOption)  
+
+    menuOptions[position]["selected"] = true;
     return menuOptions;
 }
 
