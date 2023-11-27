@@ -2,7 +2,6 @@ import ManagementService from "../services/managementService.js";
 import managementView from "../view/management/management.js";
 import AuthController from "./authController.js";
 
-
 const formUser = document.getElementById("formUser");
 
 document.addEventListener('DOMContentLoaded', async () => 
@@ -13,6 +12,7 @@ document.addEventListener('DOMContentLoaded', async () =>
     );
     managementView.render(headerMenuItems);
 
+    /*
     let roles = await ManagementService.getRoles();
     let positions = await ManagementService.getPositions();
     let deparments = await ManagementService.getDepartments();
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () =>
     managementView.addDepartment(deparments);
 
     managementView.addInputValidation();
-
+*/
     formUser.addEventListener("submit", function (event) {
 
         event.preventDefault();

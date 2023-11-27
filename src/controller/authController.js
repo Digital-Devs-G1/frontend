@@ -25,6 +25,14 @@ function headerMenuOptions(selectedMenuOption)
         menuOptions.push(optionView);
     }  
 
+    if(isAdmin()){
+        let optionView = {
+            name: "Administracion",
+            href: "../management/management2.html"
+        }
+        menuOptions.push(optionView);
+    }  
+
     menuOptions[selectedMenuOption]["selected"] = true;
     return menuOptions;
 }
@@ -33,6 +41,12 @@ const isApprover = () =>{
     let data = JSON.parse(localStorage.getItem("data"));
 
     return data.isApprover === "True";
+}
+
+const isAdmin = () =>{
+    let data = JSON.parse(localStorage.getItem("data"));
+
+    return data.rol === "Admin";
 }
 
 const AuthController = {
