@@ -3,6 +3,14 @@ const historyMenuIndex = 1;
 const pendingApprovalsMenuIndex = 2;
 const management = 3;
 
+function getManagementOptions()
+{
+    if(isAdmin())
+        return ["usuario", "position", "department", "reportTemplate"];
+    if(isSuperAdmin())
+        return ["usuario", "company"]; 
+    return [];
+}
 
 function headerMenuOptions(selectedMenuOption) 
 {
@@ -28,7 +36,7 @@ function headerMenuOptions(selectedMenuOption)
     if(isAdmin()){
         let optionView = {
             name: "Administracion",
-            href: "../management/management2.html"
+            href: "../management/management.html"
         }
         menuOptions.push(optionView);
     }  
@@ -49,12 +57,19 @@ const isAdmin = () =>{
     return data.rol === "Admin";
 }
 
+const isSuperAdmin = () =>{
+    let data = JSON.parse(localStorage.getItem("data"));
+
+    return data.rol === "SuperAdmin";
+}
+
 const AuthController = {
     pendingApprovalsMenuIndex : pendingApprovalsMenuIndex,
     newReportMenuIndex : newReportMenuIndex,
     historyMenuIndex : historyMenuIndex,
     management: management,
-    headerMenuOptions : headerMenuOptions
+    headerMenuOptions : headerMenuOptions,
+    getManagementOptions : getManagementOptions
 }
 
 export default AuthController;

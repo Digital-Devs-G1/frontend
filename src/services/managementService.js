@@ -1,5 +1,5 @@
 import managementRepository from "../Repository/managementApi/managementRepository.js";
-import getData from "./simpleErrorManager.js";
+import {getData} from "./simpleErrorManager.js";
 
 async function getRoles()
 {

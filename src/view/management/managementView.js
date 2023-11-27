@@ -5,31 +5,62 @@ import HeaderComponent from "../../component/headerComponent.js";
 const abm = {
     usuario: [
         {
-            label: "Email",
-            value: "",
-            dataType: 2
+            name: "Email",
+            id: "",
+            dataTypeId: 2
         },
         {
-            label: "Password",
-            value: "",
-            dataType: 2
+            name: "Password",
+            id: "",
+            dataTypeId: 2
         },
         {
-            label: "Nombre",
-            value: "",
-            dataType: 2
+            name: "Nombre",
+            id: "",
+            dataTypeId: 2
         },
         {
-            label: "Apellido",
-            value: "",
-            dataType: 2
+            name: "Apellido",
+            id: "",
+            dataTypeId: 2
         },
         {
-            label: "Es Aprobador",
-            value: "",
-            dataType: 4
+            name: "Es Aprobador",
+            id: "",
+            dataTypeId: 4
         }
-    ]   
+    ],
+    position: [
+        {
+            name: "Nombre",
+            id: "",
+            dataTypeId: 2
+        },
+        {
+            name: "Jerarquia",
+            id: "",
+            dataTypeId: 2
+        },
+        {
+            name: "Max. importe aprobacion",
+            id: "",
+            dataTypeId: 5
+        }
+    ],
+    department: [
+        {
+            name: "Nombre",
+            id: "",
+            dataTypeId: 2
+        }
+    ],
+    reportTemplate: [
+        {
+            name: "Nombre",
+            id: "",
+            dataTypeId: 2
+        }
+    ]
 }
 
 function render(menuItems, fields) 
@@ -39,10 +70,10 @@ function render(menuItems, fields)
     let abmSelect = document.getElementById('abmSelect');
     SelectOptions.render(getOptionValues(fields), abmSelect);
     let firstOption = abmSelect.querySelectorAll('option')[0];
-    firstOption.setAttribute('selected');
+    firstOption.setAttribute('selected', "");
     showFields(abm[fields[0]]);
     abmSelect.addEventListener('change', (event) => { 
-        let option = event.target.SelectOptions()[0].value;
+        let option = event.target.options[event.target.selectedIndex].value;
         showFields(abm[option]); 
     });
 };
@@ -56,7 +87,7 @@ function getOptionValues(fields)
             name:field
         });
     });
-    
+    return values;   
 }
 
 function showFields(payload)
@@ -75,19 +106,10 @@ function cleanFields()
     }   
 }
 
-{
-    label: "Importe",
-    value: report.amount,
-    dataType: 5 
-}
-
-const NewReportView = {
-    render,
-    showFields,
-    cleanFields,
+const ManagementView = {
+    render
 };
 
 export {
-    contadorDeCampos,
-    NewReportView
+    ManagementView
 };

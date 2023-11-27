@@ -1,8 +1,8 @@
 import ManagementService from "../services/managementService.js";
-import managementView from "../view/management/management.js";
+import { ManagementView } from "../view/management/managementView.js";
 import AuthController from "./authController.js";
 
-const formUser = document.getElementById("formUser");
+const formUser = document.getElementById("save");
 
 document.addEventListener('DOMContentLoaded', async () => 
 {
@@ -10,7 +10,10 @@ document.addEventListener('DOMContentLoaded', async () =>
     let headerMenuItems = AuthController.headerMenuOptions(
         selectedOption
     );
-    managementView.render(headerMenuItems);
+    ManagementView.render(
+        headerMenuItems, 
+        AuthController.getManagementOptions()
+    );
 
     /*
     let roles = await ManagementService.getRoles();
@@ -32,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async () =>
     });
     deparmenteSelect.addEventListener('change',()=>{
         getSuperiors();
-    })
+    })*/
 
     formUser.addEventListener("submit", function (event) {
 
