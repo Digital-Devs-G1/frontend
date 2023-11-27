@@ -1,9 +1,10 @@
 import managementRepository from "../Repository/managementApi/managementRepository.js";
+import LoginRepository from "../Repository/loginApi/loginRepository.js"
 import {getData} from "./simpleErrorManager.js";
 
 async function getRoles()
 {
-    let result = await managementRepository.getRoles() ;
+    let result = await LoginRepository.getRoles();
     return getData(result);
 };
 
