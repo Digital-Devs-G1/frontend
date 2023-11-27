@@ -2,7 +2,6 @@ import ManagementService from "../services/managementService.js";
 import managementView from "../view/management/management.js";
 import AuthController from "./authController.js";
 
-
 const formUser = document.getElementById("formUser");
 
 document.addEventListener('DOMContentLoaded', async () => 
@@ -24,6 +23,16 @@ document.addEventListener('DOMContentLoaded', async () =>
 
     managementView.addInputValidation();
 
+    let positionSelect = document.getElementById('position');
+    let deparmenteSelect = document.getElementById('department');
+
+    positionSelect.addEventListener('change',()=>{
+        getSuperiors();
+    });
+    deparmenteSelect.addEventListener('change',()=>{
+        getSuperiors();
+    })
+
     formUser.addEventListener("submit", function (event) {
 
         event.preventDefault();
@@ -31,6 +40,21 @@ document.addEventListener('DOMContentLoaded', async () =>
     });
 });
 
+
+const getSuperiors = async ()=>{
+    let values = managementView.loadSuperiors();
+
+    console.log(values)
+    if(values !== null ){
+    
+        let deparment = values.department;
+        let position = values.position;
+
+        let superiors = await ManagementService.getSuperiors(deparment,position);
+
+        managementView.addSuperior(superiors);
+    }   
+};
 
 const crearUsuario = async ()=>{
     

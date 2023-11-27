@@ -1,5 +1,5 @@
 import {HttpMethod, defaultOptions, safeFetch } from '../safe-fetch.js'; 
-import {DepartmentUrlBuilder,PositionUrlBuilder} from './companyApis.js';
+import {DepartmentUrlBuilder,PositionUrlBuilder,EmployeeUrlBuilder} from './companyApis.js';
 import {LoginUrlBuilder,rolUrlBuilder} from './loginApis.js';
 
 async function register(body)
@@ -30,11 +30,19 @@ async function getPostions()
     return await safeFetch(url, options);
 };
 
+async function getSuperiors(deparment,position)
+{
+    const url = new EmployeeUrlBuilder().getSuperiors(deparment,position);
+    const options = defaultOptions(HttpMethod.get); 
+    return await safeFetch(url, options);
+};
+
 const managementRepository = {
     register,
     getRoles,
     getDeparments,
-    getPostions
+    getPostions,
+    getSuperiors
 };
 
 export default managementRepository;
