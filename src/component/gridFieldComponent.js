@@ -18,7 +18,7 @@ function getBooleanButtonHtml(item)
   return `
     <div class="input-group">
       <input type="checkbox" data-type="${item.dataTypeId}" class="btn-check" id="btncheck${item.id}" autocomplete="off">
-      <label class="btn btn-outline-primary input-group-text" for="btncheck${item.id}" name="${item.name}">${item.name} Off</label>
+      <label class="input-group-text btn btn-outline-primary button-label-check" for="btncheck${item.id}" name="${item.name}">${item.name} Off</label>
     </div>`;
 }
 
