@@ -15,12 +15,12 @@ class LoginUrlBuilder {
   register () { return `${this.base()}/Register` }
 }
 
-class rolUrlBuilder {
+class RolUrlBuilder {
   base () { return generateURL("/Rol") }
   roles () { return `${this.base()}/GetAllRoles` }
 }
 
 export {
   LoginUrlBuilder,
-  rolUrlBuilder
+  RolUrlBuilder
 };

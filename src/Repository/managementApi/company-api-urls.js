@@ -24,14 +24,22 @@ class PositionUrlBuilder {
 }
 
 class EmployeeUrlBuilder {
-    position () { return generateURL("/Employee") }
+    employee () { return generateURL("/Employee") }
     getSuperiors (department,position) { 
-        return `${this.position()}/Superiors?department=${department}&position=${position}` 
+        return `${this.employee()}/Superiors?department=${department}&position=${position}` 
     }
+}
+
+class CompanyUrlBuilder {
+    company () { return generateURL("/Company") }
+    byId (id) { return `${this.company()}/${id}` }
+    getAll () { return `${this.company()}/GetAll` }
+    insert () { return `${this.company()}/Insert` }
 }
 
 export {
     DepartmentUrlBuilder,
     PositionUrlBuilder,
-    EmployeeUrlBuilder
+    EmployeeUrlBuilder,
+    CompanyUrlBuilder
 };
