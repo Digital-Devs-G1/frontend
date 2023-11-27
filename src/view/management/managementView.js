@@ -16,7 +16,7 @@ const abm = {
         },
         {
             name: "Nombre",
-            id: "firstName",
+            id: "firsName",
             dataTypeId: 2
         },
         {
