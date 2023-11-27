@@ -40,10 +40,8 @@ function headerMenuOptions(selectedMenuOption)
         }
         menuOptions["management"] = optionView;
     }  
-
-    let position =menuOptions.findIndex(option => option.name === selectedMenuOption)  
-
-    menuOptions[position]["selected"] = true;
+    if(menuOptions[selectedMenuOption])
+        menuOptions[selectedMenuOption]["selected"] = true;
     return menuOptions;
 }
 

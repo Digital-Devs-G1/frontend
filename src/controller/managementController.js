@@ -11,48 +11,17 @@ document.addEventListener('DOMContentLoaded', async () =>
     let headerMenuItems = AuthController.headerMenuOptions(
         selectedOption
     );
-
     ManagementView.render(
         headerMenuItems, 
         AuthController.getManagementOptions()
     );
-
     const button = document.getElementById("login-out-button");
     LoginOut.event(button);
-
-
-    // cuando esto cambieeee
     let abmSelect = document.getElementById('abmSelect');
-    
     abmSelect.addEventListener('change', (event) => { 
         let option = event.target.options[event.target.selectedIndex].value;
-        addValidations(option); 
+        renderSelectedOption(option); 
     });
-
-
-    // como hago las peticiones por cada formulario --> si se renderiza en la vista como ejecuto aca las peticiones :0
-
-    /*
-    let roles = await ManagementService.getRoles();
-    let positions = await ManagementService.getPositions();
-    let deparments = await ManagementService.getDepartments();
- 
-    // lo envia a la view
-    managementView.addPositions(positions);
-    managementView.addRoles(roles);
-    managementView.addDepartment(deparments);
-
-    managementView.addInputValidation();
-
-    let positionSelect = document.getElementById('position');
-    let deparmenteSelect = document.getElementById('department');
-
-    positionSelect.addEventListener('change',()=>{
-        getSuperiors();
-    });
-    deparmenteSelect.addEventListener('change',()=>{
-        getSuperiors();
-    })*/
     createButton.addEventListener("click", function (event) {
         event.preventDefault();
         //crearUsuario();
@@ -60,70 +29,86 @@ document.addEventListener('DOMContentLoaded', async () =>
         console.log(request);
     });
 });
-/*
-function addValidations(option)
+
+function renderSelectedOption(option)
 {
     switch (option) {
         case "usuario":
-            userValidation();
+            renderUserExtraFields();
             break;
-        case 2:
-        
-            break;
-        case 3:
-        
-            break;
-        case 4:
-        
-            break;
-    
-        default:
+        case "reportTemplate":
+            renderReportTemplate()
             break;
     }
 }
 
-async function userValidation(){
+async function renderReportTemplate()
+{
+    
+}
 
+async function renderUserExtraFields()
+{
     let fieldsGrid = document.getElementById('fieldsGrid');
-    ManagementView.agregarSelectUser(fieldsGrid);
-
-
     let roles = await ManagementService.getRoles();
     let positions = await ManagementService.getPositions();
-    let deparments = await ManagementService.getDepartments();
- 
-    ManagementView.addPositions(positions);
-    ManagementView.addRoles(roles);
-    ManagementView.addDepartment(deparments);
-
-    ManagementView.addInputValidation();
-
-    let positionSelect = document.getElementById('position');
-    let deparmenteSelect = document.getElementById('department');
-
-    positionSelect.addEventListener('change',()=>{
-        getSuperiors();
-    });
-    deparmenteSelect.addEventListener('change',()=>{
-        getSuperiors();
-    });
+    let departments = await ManagementService.getDepartments();
+    ManagementView.renderExtraUserFields(
+        fieldsGrid,
+        positions,
+        roles,
+        departments
+    ); 
+    //ManagementView.addInputValidation();
+    document
+        .getElementById('position')
+        .addEventListener('change',()=>{
+            addSuperiors();
+        });
+    document
+        .getElementById('department')
+        .addEventListener('change',()=>{
+            addSuperiors();
+        });
 }
-*/
 
-const getSuperiors = async ()=>{
-    let values = ManagementView.loadSuperiors();
+async function addSuperiors()
+{
+    let values = getPositionAndDepartment();
 
-    if(values !== null ){
-    
+    if(values !== null )
+    {    
         let deparment = values.department;
         let position = values.position;
-
-        let superiors = await ManagementService.getSuperiors(deparment,position);
-
+        let superiors = await ManagementService.getSuperiors(deparment, position);
         ManagementView.addSuperior(superiors);
     }   
 };
 
+function getPositionAndDepartment()
+{
+    let deparmenteSelect = document.getElementById('department');
+    let positionSelect = document.getElementById('position');
+    let superiorSelect = document.getElementById('superior');
+    let result;
+    if (positionSelect.value !== '' && deparmenteSelect.value !== '') 
+    {
+        superiorSelect.removeAttribute('disabled');
+        superiorSelect.innerHTML = "";
+        result = {
+            position: positionSelect.value,
+            department: deparmenteSelect.value
+        };
+    } 
+    else 
+    {
+      superiorSelect.setAttribute('disabled', 'disabled');
+      result = null;
+    }
+    return result;
+}
+
+/*
 const crearUsuario = async ()=>{
     
     if(ManagementView.validarForm()){
@@ -132,6 +117,7 @@ const crearUsuario = async ()=>{
         await ManagementService.insertUser(request);
     }        
 };
+*/
 
 function createRequestBody()
 {
