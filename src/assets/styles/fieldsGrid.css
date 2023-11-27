@@ -9,6 +9,11 @@
     width: 100%;
 }
 
+.input-group-text > label {
+    width: 100%;
+    border-radius: 5px;
+}
+
 @media (max-width: 800px) {
     #fieldsGrid {
         grid-template-columns: 1fr;
