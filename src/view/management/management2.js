@@ -30,11 +30,9 @@ function addPositions(positions)
       option.text = position.description;
       positionSelect.appendChild(option);
   });
-
 }
 
 const deparmenteSelect = document.getElementById('department');
-
 function addDepartment(deparment)
 {
   deparmenteSelect.innerHTML += '<option value="" disabled selected>Selecciona departamento</option>'
@@ -47,19 +45,18 @@ function addDepartment(deparment)
   });
 }
 const superiorSelect = document.getElementById('superior');
-
-function addSuperior(superior)
+function addSuperior(superiors)
 {
-  superiorSelect.innerHTML += '<option value="" disabled selected>Selecciona superior</option>'
+  superiorSelect.innerHTML += `<option value="" disabled selected>Selecciona superior</option>
+  <option value="-1">Sin superior</option>`
 
-  superior.forEach((sup) => {
+  superiors.forEach((sup) => {
     let option = document.createElement("option");
-    //option.value = dep.departmentId;
-    //option.text = dep.name;
-    //deparmenteSelect.appendChild(option);
+    option.value = sup.id
+    option.text = `${sup.firsName} ${sup.lastName}`;
+    superiorSelect.appendChild(option);
   });
 }
-
 
 const lastName = document.getElementById("lastName");
 const firstName = document.getElementById("firstName");
@@ -86,7 +83,7 @@ function createUserRequest()
     lastName: lastName.value,
     departmentId: deparmenteSelect.value,
     positionId: positionSelect.value,
-    superiorId: null
+    superiorId: superiorSelect.value === -1? null : superiorSelect.value
   };
   return user;
 }
@@ -107,13 +104,26 @@ const checkCampos=()=>{
   return campos.firstName && campos.lastName && campos.email && campos.password && campos.position && campos.rol  && campos.department
 };
 
-// todo esto en el render
 const addInputValidation=()=>{
 
   inputs.forEach(input => {
     input.addEventListener(`keyup`,()=>validarFormulario(input));
     input.addEventListener(`blur`,()=>validarFormulario(input));    
   });
+}
+
+function loadSuperiors(){
+
+  if (positionSelect.value !== '' && deparmenteSelect.value !== '') {
+
+    superiorSelect.removeAttribute('disabled');
+    superiorSelect.innerHTML = "";
+    return {position:positionSelect.value,department:deparmenteSelect.value};
+  } else {
+    
+    superiorSelect.setAttribute('disabled', 'disabled');
+    return null;
+  }
 }
 
 const validarFormulario=(input)=>{
@@ -144,10 +154,6 @@ const validarFormulario=(input)=>{
           break;
   }
 
-  //if(checkCampos()){
-      //console.log("esta correcto!!!")
-      // desactivar boton
-  //}
 }
 
 const validarCampo=(input)=>{
@@ -157,19 +163,6 @@ const validarCampo=(input)=>{
     return false;
   }else{
     valueRight(input);
-    return true;
-  }
-}
-
-
-const validarDepartamento=(input)=>{
-
-  if (input.value==="" || (input.value.length > 50) ) {
-    valueWrong(input);
-    return false;
-  }else{
-    valueRight(input);
-
     return true;
   }
 }
@@ -184,12 +177,6 @@ const valueRight =(input)=>{
   padre.classList.remove("form_grupo-incorrecto");
 }
 
-
-// const addSuperior =(input)=>{
-//   const padre = input.parentElement;
-//   padre.classList.remove("form_grupo-incorrecto");
-// }
-
 const managementView = {
   addRoles,
   addPositions,
@@ -197,7 +184,9 @@ const managementView = {
   createUserRequest,
   render,
   validarForm,
-  addInputValidation
+  addInputValidation,
+  loadSuperiors,
+  addSuperior
 };
 
 export default managementView;
