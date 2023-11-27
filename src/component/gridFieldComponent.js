@@ -27,7 +27,7 @@ function getInputHtml(item, inputType)
   return `
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">${item.name}</span>
-        <input type="${inputType}" data-type="${item.dataTypeId}" class="form-control" placeholder="Value" aria-label="Value" aria-describedby="basic-addon1">
+        <input id="${item.id}" type="${inputType}" data-type="${item.dataTypeId}" class="form-control" placeholder="Value" aria-label="Value" aria-describedby="basic-addon1">
     </div>`;
 }
 
