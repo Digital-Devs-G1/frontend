@@ -24,7 +24,7 @@ async function registerUser(user)
 
 const LoginRepository = {
     login : login,
-    resgiste : registerUser,
+    register : registerUser,
     roles : getRoles
 };
 

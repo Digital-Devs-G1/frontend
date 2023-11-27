@@ -1,10 +1,8 @@
 import {HttpMethod, defaultOptions, safeFetch } from '../safe-fetch.js'; 
 import {DepartmentUrlBuilder,PositionUrlBuilder,EmployeeUrlBuilder, CompanyUrlBuilder} from './company-api-urls.js';
-import {LoginUrlBuilder,RolUrlBuilder} from '../loginApi/login-api-urls.js';
 
 
 // --- Employee ---
-
 async function getSuperiors(deparment,position)
 {
     const url = new EmployeeUrlBuilder().getSuperiors(deparment,position);
@@ -73,7 +71,7 @@ async function deleteDepartment(id)
 }
 
 
-const managementRepository = {
+const ManagementRepository = {
     getDeparments,
     getPostions,
     getSuperiors,
@@ -85,4 +83,4 @@ const managementRepository = {
     deletePosition
 };
 
-export default managementRepository;
+export default ManagementRepository;

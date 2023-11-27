@@ -11,7 +11,7 @@ const generateURL = (endpoint) => {
 
 class DepartmentUrlBuilder {
     department () { return generateURL("/Department") }
-    getAll () { return `${this.department()}/GetAll` }
+    getAll () { return `${this.department()}/GetAll` }  
     insert () { return `${this.department()}/Insert` }
     delete (id) { return `${this.department()}/Delete/${id}` }
 }

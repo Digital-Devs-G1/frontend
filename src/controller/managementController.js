@@ -1,6 +1,7 @@
 import ManagementService from "../services/managementService.js";
 import { ManagementView } from "../view/management/managementView.js";
 import AuthController from "./authController.js";
+import LoginOut from "./loginOutController.js";
 
 const formUser = document.getElementById("save");
 
@@ -14,6 +15,9 @@ document.addEventListener('DOMContentLoaded', async () =>
         headerMenuItems, 
         AuthController.getManagementOptions()
     );
+
+    const button = document.getElementById("login-out-button");
+    LoginOut.event(button);
 
     /*
     let roles = await ManagementService.getRoles();
