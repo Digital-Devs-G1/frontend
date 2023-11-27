@@ -44,7 +44,7 @@ async function addNewReport(newReport)
     if (result.ok)
     {
         Swal.fire({
-            position: "top-end",
+            position: "top",
             icon: "success",
             title: "Reporte registrado",
             showConfirmButton: false,
@@ -85,6 +85,17 @@ async function createTemplate(template){
             showConfirmButton: false,
             timer: 1500
         });
+    } 
+    else
+    {
+        Swal.fire({
+            position: "top",
+            icon: "error",
+            title: "error al crear template",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        result = false;
     }
 
     return getData(result);
