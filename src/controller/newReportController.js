@@ -67,12 +67,15 @@ async function showTemplateHandler(event) {
 function addFixedFields(payload) 
 {
     payload.push({
+        "fieldTemplateId": payload[0].fieldTemplateId,
         "name": "Importe",
-        "value": "$0"
+        "dataTypeId": 5
+
     });
     payload.push({
+        "fieldTemplateId": payload[0].fieldTemplateId,
         "name": "Detalles",
-        "value": "Breve descripcion"
+        "dataTypeId": 2
     });
 }
 
@@ -87,8 +90,14 @@ async function saveReport()
     const length = inputElements.length;
     for (let i = 0; i < length - 2; i++) {
         const elem = inputElements[i];
-        const name = elem.querySelector('span').textContent;
-        const value = elem.querySelector('input').value;
+        let name = elem.querySelector('.input-group-text');
+        let value = elem.querySelector('input');
+        
+        if(value.getAttribute('data-type') == "4")
+        { name = name.getAttribute('name'); value = value.checked.toString(); }
+        else
+        { name = name.textContent; value = value.value; }
+
         const fieldObject = {
             "name": name,
             "value": value

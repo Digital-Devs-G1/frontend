@@ -9,6 +9,11 @@
     width: 100%;
 }
 
+.button-label-check{
+    width: 100% !important;
+    border-radius: 5px !important;
+}
+
 @media (max-width: 800px) {
     #fieldsGrid {
         grid-template-columns: 1fr;
