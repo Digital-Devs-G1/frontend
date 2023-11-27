@@ -22,15 +22,6 @@ document.addEventListener('DOMContentLoaded', async () =>
 async function setButtonsEvent(container) 
 {
     let handler = {
-        details: async (id) => {
-          
-          let fields = await ReportService.getReportFields(id)
-          let modalDetail = document.getElementById("pendingModal")
-          modalDetail.innerHTML = "";
-          fields.forEach(field => {
-            modalDetail.innerHTML += `<p><span>${field.label}: </span> ${field.value}</p>`; 
-          });
-        },
         approve: async (id) => {
           if (await ReportService.accept(id)) {
             let row = container.querySelector(`tr[tr-id="${id}"]`);
@@ -46,12 +37,6 @@ async function setButtonsEvent(container)
           }
         }
     };
-    let detailButtons = container.querySelectorAll("button.detailsButton");
-    detailButtons.forEach(function (button) {
-      button.addEventListener("click", async function () {
-        handler.details(button.getAttribute('item-id'));
-      });
-    });
     let approveButtons = container.querySelectorAll(".approveButton");
     approveButtons.forEach(function (button) {
       button.addEventListener("click", async function () {

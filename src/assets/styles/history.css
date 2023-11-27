@@ -1,6 +1,6 @@
-.customCard {
-    width: 95vw;
-}
+@import url("./detailModal.css");
+@import url("./customTable.css");
+@import url("./header.css");
 
 .historyButtons {
     display: flex;

@@ -1,0 +1,12 @@
+.customCard {
+    width: 95vw;
+}
+
+.customTableDate {
+    min-width: 7rem;
+}
+
+.emptyList {
+    font-size: 1rem;
+    margin-bottom: 0px;
+}

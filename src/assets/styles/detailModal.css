@@ -1,0 +1,10 @@
+#detailModal .modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#detailList p span {
+    font-weight: bold;
+    color: var(--custum-light-blue); 
+}

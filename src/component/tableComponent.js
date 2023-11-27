@@ -1,6 +1,10 @@
 function render(container, menuHeader, menuItems, buttonsClassName, buttons) {
-  let result = `
-    <table class="table customTable table-hover">
+  let result;
+  if (! menuItems || menuItems.length == 0)
+    result = `<h1 class="emptyList">No hay items para mostrar</h1>`;
+  else
+    result = `
+      <table class="table customTable table-hover">
         <thead>
             <tr>
                 ${menuHeader.map((column) => {
@@ -30,6 +34,7 @@ function render(container, menuHeader, menuItems, buttonsClassName, buttons) {
               })
               .join("")}
         </tbody>
+      </table>
     `;
     container.innerHTML = result;
 }
