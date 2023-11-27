@@ -42,7 +42,9 @@ async function safeFetch(url, options)
         if(result.status === 401)
             window.location.href = `../login/login.html?href=${window.location.href}`;
         if(result.status === 400 || result.status === 404 || result.status === 409 || result.status === 500)
+        {
             console.log(result);
+        }
         return result;
     }
     catch (error) 

@@ -19,7 +19,6 @@ function getBooleanButtonHtml(item)
     <div class="input-group">
       <input item-id=${item.id} type="checkbox" data-type="${item.dataTypeId}" class="btn-check" id="btncheck${item.id}" autocomplete="off">
       <label class="input-group-text btn btn-outline-primary button-label-check" for="btncheck${item.id}" name="${item.name}">${item.name} Off</label>
-      <p class="form_input-error">email requerido, maximo 50 caracteres.</p>
     </div>`;
 }
 
@@ -29,7 +28,7 @@ function getInputHtml(item, inputType)
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">${item.name}</span>
         <input item-id=${item.id} type="${inputType}" data-type="${item.dataTypeId}" class="form-control" placeholder="Value" aria-label="Value" aria-describedby="basic-addon1">
-        <p class="form_input-error">email requerido, maximo 50 caracteres.</p>
+        <p class="form_input-error">${item.name} was wrong</p>
     </div>`;
 }
 

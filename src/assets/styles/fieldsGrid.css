@@ -2,6 +2,22 @@
     margin-bottom: 1rem;
 }
 
+.input-group {
+    max-height: 38px;
+}
+
+.form_input-error{
+    display: none;
+    font-size: 12px;
+    line-height: 12px;
+    margin-bottom: 0;
+    margin-left: 10px;
+    opacity: 0;
+    width: 100%;
+    text-align: center;
+    color: var(--error-red);
+}
+
 #fieldsGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;

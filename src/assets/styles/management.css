@@ -9,14 +9,6 @@
     width: 100%;
 }
 
-.form_input-error{
-    font-size: 12px;
-    line-height: 12px;
-    margin-bottom: 0;
-    margin-left: 10px;
-    opacity: 0;
-}
-
 .p-error{
     line-height: 12px;
     margin-bottom: 0;
@@ -24,11 +16,13 @@
     opacity: 0;
 }
 
-
+.form_grupo-incorrecto p {
+    display: block;
+}
 
 
 .form_grupo-incorrecto .form_input{
-    border:1px solid #bb2929;
+    border:1px solid var(--error-red);
 }
 
 .form_grupo-incorrecto .form_input-error{

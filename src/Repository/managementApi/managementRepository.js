@@ -21,7 +21,7 @@ async function getPostions()
 async function createPosition(position)
 {
     const url = new PositionUrlBuilder().insert();
-    const options = defaultOptions(HttpMethod.put, position);
+    const options = defaultOptions(HttpMethod.post, position);
     return await safeFetch(url, options);
 }
 
@@ -44,7 +44,7 @@ async function getCompanys()
 async function createCompany(company)
 {
     const url = new CompanyUrlBuilder().insert();
-    const options = defaultOptions(HttpMethod.put, company);
+    const options = defaultOptions(HttpMethod.post, company);
     return await safeFetch(url, options);
 }
 
@@ -59,7 +59,7 @@ async function getDeparments()
 async function createDepartment(department)
 {
     const url = new DepartmentUrlBuilder().insert();
-    const options = defaultOptions(HttpMethod.put, department);
+    const options = defaultOptions(HttpMethod.post, department);
     return await safeFetch(url, options);
 }
 

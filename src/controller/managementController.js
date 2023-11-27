@@ -149,7 +149,12 @@ function validateField(input)
     switch(input.getAttribute('data-type'))
     {
         case "1": value = validateNumber(input);    break;
-        case "2": value = validateText(input);      break;
+        case "2": 
+            if(input.getAttribute('item-id') == "email")
+                value = validateEmail(input);
+            else
+                value = validateText(input);      
+            break;
         case "3": value = input.value;              break;
         case "4": value = validateCheckbox(input);  break;
         case "5": value = validateNumber(input);    break;
@@ -158,6 +163,15 @@ function validateField(input)
     if(value)
         ManagementView.valueRight(input);
     return value;
+}
+
+function validateEmail(input)
+{
+    const regularExpression = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if(regularExpression.test(input.value))
+        return input.value;
+    ManagementView.valueWrong(input);
+    return null;
 }
 
 function validateNumber(input)
