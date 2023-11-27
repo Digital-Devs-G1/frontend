@@ -23,7 +23,15 @@ class PositionUrlBuilder {
     delete (id) { return `${this.position()}/Delete/${id}` }
 }
 
+class EmployeeUrlBuilder {
+    position () { return generateURL("/Employee") }
+    getSuperiors (department,position) { return `${this.position()}/Superiors?department=${department}&position=${position}` }
+    insert () { return `${this.position()}/Insert` }
+    delete (id) { return `${this.position()}/Delete/${id}` }
+}
+
 export {
     DepartmentUrlBuilder,
-    PositionUrlBuilder
+    PositionUrlBuilder,
+    EmployeeUrlBuilder
 };
