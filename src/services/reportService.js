@@ -4,12 +4,31 @@ import {getData, booleanResponse} from "./simpleErrorManager.js";
 async function dismiss(id)
 {
     let result = await ReportRepository.dismiss(id);
+    if (result.ok)
+    {
+        showAlert("Reporte rechazado","success") 
+        result = true;
+    } else
+    {
+        showAlert("error al rechazar","error") 
+        result = false;
+    }
     return booleanResponse(result);
 };
 
 async function accept(id)
 {
     let result = await ReportRepository.accept(id);
+
+    if (result.ok)
+    {
+        showAlert("Reporte aceptado","success") 
+        result = true;
+    } else
+    {
+        showAlert("error al aceptar","error") 
+        result = false;
+    }
     return booleanResponse(result);
 };
 
@@ -43,24 +62,11 @@ async function addNewReport(newReport)
     let result = await ReportRepository.addNewReport(newReport);
     if (result.ok)
     {
-        Swal.fire({
-            position: "top",
-            icon: "success",
-            title: "Reporte registrado",
-            showConfirmButton: false,
-            timer: 1500
-        });
-        
+        showAlert("Reporte registrado","success") 
         result = true;
     } else
     {
-        Swal.fire({
-            position: "top",
-            icon: "error",
-            title: "error al registrar",
-            showConfirmButton: false,
-            timer: 1500
-        });
+        showAlert("error al registrar","error") 
         result = false;
     }
     return result;
@@ -77,28 +83,26 @@ async function createTemplate(template){
     let result = await ReportRepository.createTemplate(template);
 
     if(result.status === 201){
-
-        Swal.fire({
-            position: "top",
-            icon: "success",
-            title: "Template creado",
-            showConfirmButton: false,
-            timer: 1500
-        });
+        showAlert("Template creado","success")
     } 
     else
     {
-        Swal.fire({
-            position: "top",
-            icon: "error",
-            title: "error al crear template",
-            showConfirmButton: false,
-            timer: 1500
-        });
+        showAlert("error al crear template","error")
         result = false;
     }
 
     return getData(result);
+}
+
+const showAlert = (message, icon) =>{
+
+    Swal.fire({
+        position: "top",
+        icon: icon,
+        title: message,
+        showConfirmButton: false,
+        timer: 1500
+    });
 }
 
 const ReportService = {

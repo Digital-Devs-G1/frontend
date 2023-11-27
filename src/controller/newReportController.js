@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', async () =>
     });
 
     //modal
-
     let btnAddField = document.getElementById("btnAddField");
     NewReportView.addDataTypeOptions();
     btnAddField.addEventListener('click',()=>{

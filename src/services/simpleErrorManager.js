@@ -32,13 +32,9 @@ export async function booleanResponse(result, msgOk, errorMsg)
 {
     if (result.ok)
     {
-        if(msgOk)
-            alert(msgOk)
         result = true;
     } else
     {
-        if(errorMsg)
-            alert(errorMsg);
         result = false;
     }
     return result;

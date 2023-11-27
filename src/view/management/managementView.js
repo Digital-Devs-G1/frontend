@@ -139,6 +139,7 @@ function renderExtraUserFields (container, positions, roles, departments)
 
     <div>
         <select id="superior" class="form-select" disabled aria-label="Default select example">
+        <option>se requiere departamento y posicion</option>
         </select>
     </div>`;
     addPositions(positions);
