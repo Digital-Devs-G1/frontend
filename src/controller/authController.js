@@ -6,7 +6,7 @@ const management = "management";
 function getManagementOptions()
 {
     if(isAdmin())
-        return ["position","usuario", "department", "reportTemplate"];
+        return ["position","usuario", "department"];
     if(isSuperAdmin())
         return ["usuario", "company"]; 
     return [];

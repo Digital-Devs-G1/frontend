@@ -7,11 +7,9 @@ async function dismiss(id)
     if (result.ok)
     {
         showAlert("Reporte rechazado","success") 
-        result = true;
     } else
     {
         showAlert("error al rechazar","error") 
-        result = false;
     }
     return booleanResponse(result);
 };
@@ -23,11 +21,9 @@ async function accept(id)
     if (result.ok)
     {
         showAlert("Reporte aceptado","success") 
-        result = true;
     } else
     {
         showAlert("error al aceptar","error") 
-        result = false;
     }
     return booleanResponse(result);
 };
